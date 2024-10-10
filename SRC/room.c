@@ -16,21 +16,42 @@ const char* get_room_txt_file(int current_room) {
 Room getRoomObjects(int room_id) {
     Room room;
     room.room_id = room_id;	
+    
+    // Initialize all objects to a default state
+    for (int i = 0; i < 3; i++) {
+        room.objects[i] = (Object){0, 0, 0, 0, 0}; 
+    }
+
     switch (room_id) {
         case 1:
-            room.objects[0] = (Object){230, 150, 210, 30, 1}; // Added object_id
-            room.objects[1] = (Object){249, 259, 160, 39, 2}; // Added object_id
-            room.objects[2] = (Object){452, 82, 60, 35, 3};  // Added object_id
+            room.objects[0] = (Object){230, 150, 210, 30, 1}; 
+            room.objects[1] = (Object){249, 259, 160, 39, 2}; 
+            room.objects[2] = (Object){452, 82, 60, 35, 3};  
             break;
-         case 2: 
-            room.objects[0] = (Object){459, 100, 50, 130, 1}; // Added object_id
-            room.objects[1] = (Object){230, 120, 30, 65, 2}; // Added object_id
-            room.objects[2] = (Object){294, 140, 25, 40, 3};  // Added object_id
+        case 2: 
+            room.objects[0] = (Object){459, 100, 50, 130, 1}; 
+            room.objects[1] = (Object){230, 120, 30, 65, 2}; 
+            room.objects[2] = (Object){294, 140, 25, 40, 3};  
             break;
-        }
-   
-    return room;
-}	
+        case 3: 
+            room.objects[0] = (Object){190, 17, 300, 180, 1}; 
+            room.objects[1] = (Object){120, 123, 30, 65, 2}; 
+            room.objects[2] = (Object){0, 0, 0, 0, 0};  
+            break;
+        case 4:
+			room.objects[0] = (Object){266, 95, 90, 150, 1}; 
+            room.objects[1] = (Object){0, 0, 30, 65, 2}; 
+            room.objects[2] = (Object){0, 0, 0, 0, 0};  
+            break;
+			
+        default:
+           
+            break;
+    }
+    
+    return room; 
+}
+
 
 int isMouseHovering(int mouse_x, int mouse_y, Object obj) {	
     if (mouse_x >= obj.x && mouse_x <= (obj.x + obj.width) &&
@@ -85,7 +106,41 @@ void hoverText(int room_id, int object_id) {
                     break; 
                    
           }
-          break;          
+          break; 
+        case 3:
+           switch (object_id) {
+                case 1:
+                    triple_dialog("The moon is shining above Baltycmorsk", 
+                                  "The seaside breeze mixes with the stench of",
+                                  "gasoline and rusty metal.");
+                    rest(20);
+                    break;
+                 case 2:
+                    triple_dialog("This is the backdoor of our base", 
+                                  "We have contacts on the national security department",
+                                  "so in theory no one is going to bother us here.");
+                    rest(20);
+                    break;
+                  case 3:
+                    break;
+        }
+        break;     
+        
+        case 4:
+			switch(object_id) {
+			case 1:
+				    triple_dialog("The only fridge that I see here", 
+                                  "It does not look like anyone is maintaining",
+                                  "this room. I did not even remember this was here");
+                    rest(20);
+                    break;
+			case 2:
+			break;
+			case 3:
+			break;	
+			
+			}
+           
     }
 }  // Missing brace was added here
 
@@ -206,6 +261,78 @@ int execute_pnc_action(int room_id, int object_id, int switches)
                         done = 1;
                         return 4;
                         break;
+					}
+					
+					case 3:
+					switch(object_id) {
+						case 2:
+							triple_dialog("Maybe I should get back to find something to eat",
+							"",
+							"");
+							blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+						    while (!key[KEY_ENTER]) {
+                            // Wait for Enter key press
+                            rest(20);
+							}
+							rest(50);
+							done = 1;
+							return 2;
+							break;
+						default:
+						break;
+						
+					}
+					
+				break;
+				
+				case 4:
+					switch(object_id) {
+						case 1:
+							if (switches == 0) {
+							triple_dialog("The stench of rotting vegetables can be felt",
+							"a kilometer away. Is the fridge even connected to begin with?",
+							"Yikes. I hesitate to even dare to open this");
+							blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+						    while (!key[KEY_ENTER]) {
+                            // Wait for Enter key press
+                            rest(20);
+							}
+							rest(50);
+							triple_dialog("Opening the fridge?",
+							"",
+							""); 
+							choice_picker_text("(1) Yeah!", "(2) Yikes!", "", 3);
+							blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+							
+							while (!key[KEY_1] || !key[KEY_2])  {
+                            // Wait for choice
+                            rest(20);
+							}
+							choice_picker_base(buffer, 3);
+							blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+							if (key[KEY_1])
+							{
+							triple_dialog("We don't hesitate!",
+							"Let's see what we can find inside...",
+							"");
+							blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+						    while (!key[KEY_ENTER]) {
+                            // Wait for Enter key press
+                            rest(20);
+							}
+							rest(50);
+							done = 1;
+							return 5;}
+							
+							if (key[KEY_2])
+							{done = 1;
+						    rest(20);
+							break;}
+							}
+							
+							if (switches == 1)
+							
+							break;
 					}
 				break;
         }

@@ -1,6 +1,5 @@
-I have to exit the control room
-and remember where the kitchen
-may be located.
+So this is where the kitchen was.
 
-&background IMG/PNC001.PCX
+
+&background IMG/PNC003.PCX
 

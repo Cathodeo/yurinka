@@ -7,6 +7,7 @@
 This is the city of Baltycmorsk. Sitting on the western border
 of the former Popular Union. Nowadays, a foreigner would
 assume, looking at its pretty 19th century landscape
+&gamemode 2
 
 
 
@@ -169,4 +170,4 @@ Nice idea. I don't recall where it was tho.
 I doubt there is any food on the control room.
 
 
-&gamemode 2
+

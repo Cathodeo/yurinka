@@ -2,5 +2,5 @@ I have to exit the control room
 and remember where the kitchen
 may be located.
 
-&background IMG/PNC001.PCX
+&background IMG/PNC004.PCX
 

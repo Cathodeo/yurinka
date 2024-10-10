@@ -90,7 +90,7 @@ int main(void) {
        case 2:
     while(type_gp == 2) {
     if (newroom == 1) { // When entering a new room
-        allegro_message("Loading room: %d", room_tracker);
+   
         printf("\nLoading room: %d", room_tracker);  // Note: changed \n to \n for new line
         install_mouse();
         poll_mouse();
@@ -118,6 +118,7 @@ int main(void) {
         // Parse room-specific information
         text_roll(file, line_numbers, textlines, choices, imagename, musicname);
 		blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+		rest(50);
         // After loading the new room, set `newroom` to 0 to start the interaction loop
         newroom = 0;
         room_compare = room_tracker;
@@ -132,17 +133,16 @@ int main(void) {
 
         // If `hovered_room` has changed, update `room_tracker`
         if (hovered_room != room_tracker) {
-            allegro_message("Room change detected to: %d", hovered_room);
             room_tracker = hovered_room;
             blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H); // Redraw background and UI
         }
 
         // If a room transition is detected, break out of the loop
         if (room_compare != room_tracker) {
-            allegro_message("Triggered newroom condition!");
+          
             newroom = 1;
-            allegro_message("Newroom: %d", newroom);
-            allegro_message("Roomtracker: %d", room_tracker);
+            
+          
             break;
         }
 

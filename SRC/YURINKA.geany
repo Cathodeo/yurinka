@@ -28,19 +28,16 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=5
-FILE_NAME_0=3921;C;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FDocuments%2FYURINKA%2FSRC%2Fmain.c;0;4
-FILE_NAME_1=3251;C;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FDocuments%2FYURINKA%2FSRC%2Froom.c;0;4
-FILE_NAME_2=553;C++;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FDocuments%2FYURINKA%2FSRC%2Froom.h;0;4
-FILE_NAME_3=0;C;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FDocuments%2FYURINKA%2FSRC%2Fparse.c;0;4
-FILE_NAME_4=0;C++;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FDocuments%2FYURINKA%2FSRC%2Fdraw.h;0;4
-FILE_NAME_5=3393;None;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FDocuments%2FYURINKA%2FSTORY%2F001A.TXT;0;4
-FILE_NAME_6=0;C;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FDocuments%2FYURINKA%2FSRC%2Fdraw.c;0;4
-FILE_NAME_7=0;None;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FDocuments%2FYURINKA%2FROOM%2FRO1.txt;0;4
-FILE_NAME_8=99;None;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FDocuments%2FYURINKA%2FROOM%2FRO2.txt;0;4
-FILE_NAME_9=0;C++;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FDocuments%2FYURINKA%2FSRC%2Fmusic.h;0;4
-FILE_NAME_10=0;C;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FDocuments%2FYURINKA%2FSRC%2Fmusic.c;0;4
-FILE_NAME_11=0;None;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FDocuments%2FYURINKA%2FROOM%2FRO3.txt;0;4
+current_page=1
+FILE_NAME_0=3493;C;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FDocuments%2FYURINKA%2FSRC%2Fmain.c;0;4
+FILE_NAME_1=10921;C;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FDocuments%2FYURINKA%2FSRC%2Froom.c;0;4
+FILE_NAME_2=191;None;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FDocuments%2FYURINKA%2FSTORY%2F001A.TXT;0;4
+FILE_NAME_3=35;None;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FDocuments%2FYURINKA%2FROOM%2FRO4.txt;0;4
+FILE_NAME_4=102;None;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FDocuments%2FYURINKA%2FROOM%2FRO5.txt;0;4
+FILE_NAME_5=0;None;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FDocuments%2FYURINKA%2FROOM%2FRO3.txt;0;4
+FILE_NAME_6=0;None;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FDocuments%2FYURINKA%2FROOM%2FRO1.txt;0;4
+FILE_NAME_7=0;None;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FDocuments%2FYURINKA%2FROOM%2FRO2.txt;0;4
+FILE_NAME_8=5346;C;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FDocuments%2FYURINKA%2FSRC%2Fparse.c;0;4
 
 [VTE]
 last_dir=/home/tmmartin
