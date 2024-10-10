@@ -1,0 +1,146 @@
+#include <allegro.h>
+#include <stdio.h>
+#include <string.h>
+#include <draw.h>
+#include <parse.h>
+#include <music.h>
+
+#define TEXTBOX_WPOS 58
+#define TEXTBOX_HPOS 344
+#define TEXTBOX_WIDTH 300
+
+
+int main(void) {
+	allegro_init();
+	install_mouse();
+	set_color_depth(16);
+	if (set_gfx_mode(GFX_AUTODETECT, 640, 480, 0, 0) != 0) {
+    if (set_gfx_mode(GFX_SAFE, 640, 480, 0, 0) != 0) {
+	 set_gfx_mode(GFX_TEXT, 0, 0, 0, 0);
+	 allegro_message("Unable to set any graphic mode\n%s\n", allegro_error);
+	 return 1;
+      }
+   	}
+	install_keyboard();
+    if (install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, "") != 0) {
+    allegro_message("Error initializing sound system!");
+    return 1;
+    }
+	
+	set_trans_blender(255, 0, 255, 0);
+	chdir("C:\\DJGPP");
+	FILE *file;
+	file = fopen("STORY\\001A.TXT", "r");
+	char textlines[3][64];
+	char choices[3][16];
+	char imagename[64];
+	char musicname[64];
+	int line_numbers[6] = {1, 2, 3, 4, 5, 6};
+	int size = sizeof(line_numbers) / sizeof(line_numbers[0]);
+
+
+	// Create a buffer
+	buffer = create_bitmap(SCREEN_W, SCREEN_H);
+	if (!buffer) {
+		allegro_message("Failed to create buffer!");
+		return -1;
+	}
+
+	draw_dialog_base(buffer);
+	choice_picker_base(buffer, 3);
+	load_blit("IMG\\BAL001.PCX", buffer, 54, 18);
+
+	int current_file = 1;
+	int type_gp = 0;
+	int text_scroll = 1;
+	int choice = 0;
+	int text_updated = 0;// Track if the text has been updated
+	// Main game loop
+	while (!key[KEY_ESC]) {
+
+		//Change between gameplays or stay the same (type_gp is a fallback that
+		//contains the last value stored)
+		type_gp = switch_gameplay(line_numbers[0], type_gp);
+		switch (switch_gameplay(line_numbers[0], type_gp)) 
+		{ case 1:
+  		if (key[KEY_ENTER] && text_updated == 0 && text_scroll == 1) {
+			next_page(line_numbers, size, 0);                  // Update the story
+			text_roll(file, line_numbers, textlines, choices, imagename, musicname); // Parse the new text
+			text_updated = 1;                                  // Mark the text as updated
+			rest(10);                                          // Delay to debounce the keypress
+		}
+
+		// Draw the text and choices
+		triple_dialog(textlines[0], textlines[1], textlines[2]);
+		choice_picker_base(buffer, 3);
+		choice_picker_text(choices[0], choices[1], choices[2], 3);
+
+		// Blit the buffer to the screen
+		blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+
+		// Reset text_updated when the key is released
+		if (!key[KEY_ENTER]) {
+			text_updated = 0;// Allow text update on next key press
+		}
+		break;             
+                gamemode_vn();
+              
+		case 2:
+			show_mouse(screen);
+			next_page(line_numbers, size, 0);                  // Update the story
+			text_roll(file, line_numbers, textlines, choices, imagename, musicname); // Parse the new text
+			text_updated = 1; 
+			triple_dialog(textlines[0], textlines[1], textlines[2]);
+			choice_picker_base(buffer, 3);
+			choice_picker_text(choices[0], choices[1], choices[2], 3);
+			blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+			show_mouse(screen);
+			poll_mouse();
+			acquire_screen();
+
+
+
+			if (choice_picker() == 1)
+			{
+			show_mouse(NULL);
+			text_scroll = 1;
+			next_page(line_numbers, size, 0);
+			triple_dialog("Alrighty. Let's step out of the control room.","","");
+			blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+			rest(200);
+			}
+
+			if (choice == 2)
+			{
+			show_mouse(NULL);
+			triple_dialog("Come on! I really need a break.","","");
+			blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+			rest(100);
+			triple_dialog("Is there anything to eat other than moldy sausages?","","");
+			blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+			rest(100);
+			choice = 0;
+			text_scroll = 1;
+			}
+			break;
+
+		case 3:
+			show_mouse(screen);
+			poll_mouse();
+			acquire_screen();
+			{
+			text_scroll = 1;
+			show_mouse(NULL);
+			next_page(line_numbers, size, 0);}
+			break;
+
+		default: 
+			triple_dialog("Improper gameplay type", "" , "" );
+	}
+	}
+
+	destroy_bitmap(buffer);
+	allegro_exit();
+	return 0;
+}
+END_OF_MAIN();

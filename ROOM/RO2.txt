@@ -1,0 +1,5 @@
+This is the main corridor.
+I have to remember where the kitchen was...
+
+
+&background IMG/PNC002.PCX
