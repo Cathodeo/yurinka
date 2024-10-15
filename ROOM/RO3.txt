@@ -3,4 +3,5 @@ It's peaceful on this part of the city.
 As if our nosy big brother can't snoop here.
 
 &background IMG/PNC005.PCX
+&music OGG/NIGHT.OGG
 

@@ -4,6 +4,7 @@
 
 #include <allegro.h>
 #include <stdio.h>
+#include <music.h>
 
 extern BITMAP *buffer;
 // Declare the function that will be defined in draw.c

@@ -4,7 +4,8 @@
 
 BITMAP *buffer;
 
-int text_roll(FILE *file, int line_numbers[6], char (*array1)[64], char (*array2)[16], char (*image_filenames)[64], char (*music_filenames)[64]) {
+int text_roll(FILE *file, int line_numbers[6], char (*array1)[64], char (*array2)[16], 
+char (*image_filenames)[64], char (*music_filenames)[64], char (*sfx_filenames)[64], char (*ambiance_filenames)[64]) {
     char parsebuff[256];  // Temporary buffer to read each line
     int current_line = 1;
     int line_index = 0;
@@ -14,6 +15,9 @@ int text_roll(FILE *file, int line_numbers[6], char (*array1)[64], char (*array2
     // Keywords for special actions
     char next_background[] = "&background";
     char next_music[] = "&music";
+    char next_sfx[] = "&sfx";
+    char next_ambiance[] = "&ambiance";
+    char halt_ambiance[] = "&stopambiance";
     char next_sprite[] = "&sprite";
     char next_gamemode[] = "&gamemode";
 
@@ -49,12 +53,34 @@ int text_roll(FILE *file, int line_numbers[6], char (*array1)[64], char (*array2
                         printf("DEBUG: Loaded Image: %s\n", argument);
                     } else if (strcmp(command, next_music) == 0 && argument) {
                         strcpy(music_filenames[0], argument); // Store the music filename
-                        play_background_music(music_filenames[0]);
-                        printf("DEBUG: Loaded MIDI: %s\n", argument);
-                    } else if (strcmp(command, next_sprite) == 0 && argument) {
+                        play_ogg(music_filenames[0]);
+                        printf("DEBUG: Loaded OGG: %s\n", argument);  
+                          
+                    } 
+						else if (strcmp(command, next_sfx) == 0 && argument) {
+                        strcpy(sfx_filenames[0], argument); // Store the music filename
+                        play_sfx(sfx_filenames[0]);
+                        printf("DEBUG: Loaded SFX: %s\n", argument);  
+                          
+                    }
+                    
+                    else if (strcmp(command, next_ambiance) == 0 && argument) {
+                        strcpy(ambiance_filenames[0], argument); // Store the music filename
+                        play_ambiance(ambiance_filenames[0]);
+                        printf("DEBUG: Loaded AMBIANCE: %s\n", argument);  
+                          
+                    }
+                    
+                    else if (strcmp(command, halt_ambiance) == 0) {
+                        stop_ambiance();
+                        printf("DEBUG: Stopped AMBIANCE");  
+                          
+                    }
+						else if (strcmp(command, next_sprite) == 0 && argument) {
                         strcpy(image_filenames[1], argument); // Store the sprite filename
-                        // Load sprite or perform sprite change here
-						// --- Placeholder -----
+						 load_blit_transparent(image_filenames[1], buffer, 70, 18);  // Load the image
+                        blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+                        printf("DEBUG: Loaded Sprite: %s\n", argument);
                     } else if (strcmp(command, next_gamemode) == 0 && argument) {
 						gamemode_id = atoi(argument);
 						return gamemode_id;
@@ -72,7 +98,7 @@ int text_roll(FILE *file, int line_numbers[6], char (*array1)[64], char (*array2
             if (line_index >= 6) {
                 break;
             }
-        }
+        }  
         current_line++;
     }
 
@@ -89,6 +115,7 @@ int text_roll(FILE *file, int line_numbers[6], char (*array1)[64], char (*array2
 }
 
 void next_page(int *array, int size, int index) {
+	play_sfx("SFX/NEXT.WAV");
     // Base case: stop when the index reaches the size of the array
     if (index == size) {
         return;
@@ -113,23 +140,24 @@ int choice_picker() {
 }
 
 // Gamemode VN:
-int parse_vnmode(int text_updated, int text_scroll, int size, FILE *file, int line_numbers[6], char (*textlines)[64], char (*choices)[16], char (*imagename)[64], char (*musicname)[64]) {
+int parse_vnmode(int text_updated, int text_scroll, int size, FILE *file, int line_numbers[6], char (*textlines)[64], char (*choices)[16], char (*imagename)[64], char (*musicname)[64], char (*sfx_filenames)[64], char (*ambiance_filenames)[64]) {
     int nextmode = 1;
-
+	
     if (key[KEY_ENTER] && text_updated == 0 && text_scroll == 1) {
-        next_page(line_numbers, size, 0);                  // Update the story
-        nextmode = text_roll(file, line_numbers, textlines, choices, imagename, musicname); // Parse the new text
+        next_page(line_numbers, size, 0);
+        nextmode = text_roll(file, line_numbers, textlines, choices, imagename, musicname, sfx_filenames, ambiance_filenames); // Parse the new text
         text_updated = 1;                                  // Mark the text as updated
         rest(100);                                         // Delay to debounce the keypress
     }
 
-    // Draw the text and choices
+    // Draw the text and choices                
     triple_dialog(textlines[0], textlines[1], textlines[2]);
     choice_picker_base(buffer, 3);
     choice_picker_text(choices[0], choices[1], choices[2], 3);
 
     // Blit the buffer to the screen
     blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+
     rest(30);
 
     // Reset text_updated when the key is released

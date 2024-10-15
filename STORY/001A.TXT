@@ -7,14 +7,13 @@
 This is the city of Baltycmorsk. Sitting on the western border
 of the former Popular Union. Nowadays, a foreigner would
 assume, looking at its pretty 19th century landscape
-&gamemode 2
 
 
 
 and luxurious skyscrappers, that its people is  
 thriving on a happy, careless life devoid of the
 perils of yesteryear.
-
+&music OGG/RADIO.OGG
 
 
 Such is the joy of the citizens of the 
@@ -32,7 +31,7 @@ The old is never lonely!
 The working class is nowadays enjoying the delights
 of the modern world, dominated by the hottest
 technologies.
-&music MIDI/BAL001.MID
+
 
 
 There is only a little "perk" to enjoy the safety and
@@ -116,13 +115,13 @@ lives of its people, do not hesitate to ping the government
 On the guvernamental radio-net address
 'prs.safetyborough'
 Together we can make this a prosperous and safe nation!
-
+&music OGG/SILENT.OGG
 
 
 -End of the transmission--
 
 
-
+&ambiance SFX/SIGNAL.WAV
 
 
 -Bzzzzzzz bzzzzz bzzzz---
@@ -170,4 +169,4 @@ Nice idea. I don't recall where it was tho.
 I doubt there is any food on the control room.
 
 
-
+&gamemode 2

@@ -3,4 +3,5 @@ and remember where the kitchen
 may be located.
 
 &background IMG/PNC004.PCX
+&ambiance SFX/CONTROL.WAV
 

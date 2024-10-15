@@ -40,8 +40,13 @@ Room getRoomObjects(int room_id) {
             break;
         case 4:
 			room.objects[0] = (Object){266, 95, 90, 150, 1}; 
-            room.objects[1] = (Object){0, 0, 30, 65, 2}; 
-            room.objects[2] = (Object){0, 0, 0, 0, 0};  
+            room.objects[1] = (Object){64, 281, 500, 30, 2}; 
+            room.objects[2] = (Object){173, 246, 70, 40, 3};  
+            break;
+        case 5:
+			room.objects[0] = (Object){145, 36, 350, 65, 1}; 
+            room.objects[1] = (Object){145, 111, 350, 98, 2}; 
+            room.objects[2] = (Object){145, 212, 350, 90, 3};  
             break;
 			
         default:
@@ -135,11 +140,44 @@ void hoverText(int room_id, int object_id) {
                     rest(20);
                     break;
 			case 2:
-			break;
+					triple_dialog("Do I want to go back to the corridor already?", 
+                                  "",
+                                  "");
+					rest(20);
+					break;
 			case 3:
-			break;	
-			
+					triple_dialog("One thing is that the children on this organization", 
+                                  "spend their days lazing around as I do, but they",
+                                  "could clean a little from time to time!");
+					rest(20);
+					break;
+		
 			}
+			break;
+			
+		    case 5:
+				switch(object_id) {
+				case 1:
+						triple_dialog("Aborrhent marinated pickles, ", 
+									  "repugnant jam. Disgusting moldy bread,",
+									  "decomposing fruit, calamity in a jar...");
+						rest(20);
+						break;
+				case 2:
+						triple_dialog("Archane potatoes, an ex-orange, ", 
+									  "leaking abominations, a loaf of anthrax,",
+									  "undead mermelade... and is that a dead mouse?");
+						rest(20);
+						break;
+				case 3:
+						triple_dialog("A huge can of putrid herring in vinegar", 
+									  "a coffin for the turistic meat of yesteryear,",
+									  "pierogi in questionable condition...");
+						rest(20);
+						break;
+			
+				}
+			break;	
            
     }
 }  // Missing brace was added here
@@ -187,6 +225,7 @@ int execute_pnc_action(int room_id, int object_id, int switches)
                         break;
 
                     case 2:
+						stop_ambiance();
                         triple_dialog("To the corridor we go!",
                                       "Actually only I",
                                       "Who am I talking to anyways?");
@@ -194,6 +233,7 @@ int execute_pnc_action(int room_id, int object_id, int switches)
                         while (!key[KEY_ENTER]) {
                             rest(20);
                         }
+               
                         done = 1;
                         return 2;
                         break;
@@ -249,6 +289,7 @@ int execute_pnc_action(int room_id, int object_id, int switches)
                         break;
                         
                         case 3:
+                        if (switches == 0) {
                         triple_dialog("To the depths of darkness we go",
                         "I have a feeling something bad is coming today",
                         "But whatever perils come to me, better if i am full");
@@ -260,13 +301,27 @@ int execute_pnc_action(int room_id, int object_id, int switches)
                         rest(50);
                         done = 1;
                         return 4;
+                        break;}
+                        
+                        if (switches == 1) {
+						triple_dialog("Now I remember. That's where the",
+                        "rancid smelled room with the fridge is.",
+                        "I think I should head back to the control room");
+                        blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+						    while (!key[KEY_ENTER]) {
+                            // Wait for Enter key press
+                            rest(20);
+                        }
+                        rest(50);
+                        done = 1;
                         break;
+						}
 					}
 					
 					case 3:
 					switch(object_id) {
 						case 2:
-							triple_dialog("Maybe I should get back to find something to eat",
+							triple_dialog("Maybe I should get back to the base",
 							"",
 							"");
 							blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
@@ -304,10 +359,11 @@ int execute_pnc_action(int room_id, int object_id, int switches)
 							choice_picker_text("(1) Yeah!", "(2) Yikes!", "", 3);
 							blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
 							
-							while (!key[KEY_1] || !key[KEY_2])  {
+							while (!key[KEY_1] && !key[KEY_2])  {
                             // Wait for choice
                             rest(20);
 							}
+						
 							choice_picker_base(buffer, 3);
 							blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
 							if (key[KEY_1])
@@ -331,16 +387,79 @@ int execute_pnc_action(int room_id, int object_id, int switches)
 							}
 							
 							if (switches == 1)
+							{
+							triple_dialog("I don't think I want to take anything else",
+							"from that stinky fridge. I should report to the org logistics",
+							"that it needs to be sprayed with Domestikos");
+							blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+						    while (!key[KEY_ENTER]) {
+                            // Wait for Enter key press
+                            rest(20);
+							}
+							rest(50);
+							break;
+							}
+							break;
 							
+						case 2:
+							return 2;
+						break;
+						
+						case 3:
+						break;
+					}
+					break;
+					
+					case 5:
+					 switch(object_id){
+						case 1:
+						triple_dialog("Thinking about it, the pickles might not",
+							"give me too much diarrhea. Plus they are low in calories",
+							"and my sedentary lifestyle does not need many anyways");
+							blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+						    while (!key[KEY_ENTER]) {
+                            // Wait for Enter key press
+                            rest(20);
+							}
+							rest(50);
+							return 4;
+							break;
+						
+						
+						case 2:
+						triple_dialog("Thinking about it, there seems to be a",
+							"little jar of jam that looks edible. I can eat it",
+							"with a coffee spoon or something, in lieu of bread...");
+							blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+						    while (!key[KEY_ENTER]) {
+                            // Wait for Enter key press
+                            rest(20);
+							}
+							rest(50);
+							return 4;
+							break;
+						
+					
+						case 3:
+						triple_dialog("The turistic meat has expiry date for the next",
+							"year. I am wondering why it's preserved on a fridge tho.",
+							"This one claims to be made with 40% of actual meat!");
+							blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+						    while (!key[KEY_ENTER]) {
+                            // Wait for Enter key press
+                            rest(20);
+							}
+							rest(50);
+							return 4;
 							break;
 					}
-				break;
-        }
+					break;
+		}
         // Small delay between frames
         rest(50);
         return room_id;
-    }
-}
+   }
+ }
 
 
 
@@ -348,10 +467,9 @@ int execute_pnc_action(int room_id, int object_id, int switches)
 
 
 
-int check_hover(Room room, int mouse_x, int mouse_y, int switches) {
-	
-	int room_from_pnc = room.room_id;
-	
+int check_hover(Room room, int mouse_x, int mouse_y, int switches) 
+{
+	int room_from_pnc = room.room_id; 
     for (int i = 0; i < 3; i++) {
     printf("DEBUG: Checking object %d in room %d\n", i, room.room_id);
     printf("DEBUG: Mouse (x=%d, y=%d), Object (x=%d, y=%d, width=%d, height=%d)\n",
@@ -368,9 +486,9 @@ int check_hover(Room room, int mouse_x, int mouse_y, int switches) {
 		}
         return room_from_pnc; 
     }
-	}	
     triple_dialog("", "", "");
-    return room_from_pnc;
+}
+   return room_from_pnc;
 }
 
 

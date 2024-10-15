@@ -28,6 +28,8 @@ int main(void) {
     char imagename[64];
     char musicname[64];
     char roomfile[16];
+    char sfxfile[64]; 
+    char ambiancefile[64];
     int line_numbers[6] = {1, 2, 3, 4, 5, 6}; // Initialize line_numbers array
     int size = sizeof(line_numbers) / sizeof(line_numbers[0]); // Size of line_numbers
 
@@ -46,15 +48,13 @@ int main(void) {
     }
 
     install_keyboard();
-    if (install_sound(DIGI_AUTODETECT, MIDI_AUTODETECT, "") != 0) {
-        allegro_message("Error initializing sound system!");
-        return 1;
-    }
-
-
+    
+    initialize_sdl_mixer();
+	Mix_VolumeMusic(48);
+	
 
     set_trans_blender(255, 0, 255, 0);
-    chdir("/home/tmmartin/Documents/YURINKA");
+    chdir("/home/tmmartin/YURINKA");
 
 
 
@@ -84,7 +84,7 @@ int main(void) {
     // Change between gameplays or stay the same (type_gp is a fallback that contains the last value stored)
     switch (type_gp) {
         case 1:
-            type_gp = parse_vnmode(text_updated, text_scroll, size, file, line_numbers, textlines, choices, imagename, musicname);
+            type_gp = parse_vnmode(text_updated, text_scroll, size, file, line_numbers, textlines, choices, imagename, musicname, sfxfile, ambiancefile);
             break;
 
        case 2:
@@ -114,14 +114,16 @@ int main(void) {
         for (int i = 1; i < 7; i++) {
             line_numbers[i - 1] = i;
         }
-
+		
         // Parse room-specific information
-        text_roll(file, line_numbers, textlines, choices, imagename, musicname);
+        text_roll(file, line_numbers, textlines, choices, imagename, musicname, sfxfile, ambiancefile);
 		blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
 		rest(50);
         // After loading the new room, set `newroom` to 0 to start the interaction loop
         newroom = 0;
         room_compare = room_tracker;
+        if (room_tracker == 5)
+        {switches = 1;}
     }
 
     // Main room interaction loop
@@ -138,15 +140,25 @@ int main(void) {
         }
 
         // If a room transition is detected, break out of the loop
-        if (room_compare != room_tracker) {
-          
+        if (room_compare != room_tracker && room_tracker != 7) {
             newroom = 1;
-            
-          
             break;
         }
+        if (hovered_room == 7)
+        {
+		fclose(file); // Close the previous file
+		FILE *file = fopen("STORY/002A.TXT", "r");
+		if (!file) {
+		for (int i = 1; i < 7; i++) {
+            line_numbers[i - 1] = i;
+        }
+        allegro_message("Failed to open STORY/002A.TXT");}
+        load_blit("IMG/MOT001.PCX", buffer, 54, 18);
+        type_gp = 1;
+        break;
+        }
 
-        rest(10); // Add delay to avoid overloading the CPU
+        rest(5); // Add delay to avoid overloading the CPU
     }
 	}
     break;

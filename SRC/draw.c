@@ -43,11 +43,14 @@ void triple_dialog(const char *text1, const char *text2, const char *text3) {
     // Draw the dialog box
     rectfill(buffer, 54, 340, 578, 410, makecol(144, 146, 145));
     rect(buffer, 54, 340, 578, 410, makecol(0,0,0));
-
     // Draws three lines of dialog. Standard way to display text
     textout_ex(buffer, font, text1, TEXTBOX_WPOS, TEXTBOX_HPOS, makecol(255, 255, 255), -1);
+    rest(5);
     textout_ex(buffer, font, text2, TEXTBOX_WPOS, TEXTBOX_HPOS + LINE_SPACING, makecol(255, 255, 255), -1);
+    rest(5);
     textout_ex(buffer, font, text3, TEXTBOX_WPOS, TEXTBOX_HPOS + (LINE_SPACING * 2), makecol(255, 255, 255), -1);
+    rest(5);
+    
 }
 
 

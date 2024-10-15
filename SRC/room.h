@@ -6,6 +6,7 @@
 #include <string.h>
 #include <draw.h>
 #include <parse.h>
+#include <music.h>
 
 
 typedef struct {

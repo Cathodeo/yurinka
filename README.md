@@ -1,25 +1,14 @@
 
 # Yurinka
 
-Yurinka is a point-and-click game developed in C with the library Allegro 4.22.
-The gameplay (WIP) consists on Point and Click puzzles, choose your adventure narrative
-and (Planned) card battles.
-
-The story describes a parody of a distopian socialist regime, but does not
-take itself seriously at any point.
-
-![Yurinka](https://github.com/user-attachments/assets/a9d36e26-40d1-4e54-b7fe-7c759bba0c1d)
-
-![Yurinka2](https://github.com/user-attachments/assets/8da82fa5-f39c-474d-942e-9add5149f579)
-
+Yurinka is a point-and-click game where every room is identified by an integer (room ID) and contains up to 3 objects. When the mouse hovers over an object, an option appears, and actions can be performed with a left-click. The game is being developed using Allegro and runs on MS-DOS.
 
 ## Features
 
 - Point-and-click mechanics
 - Room and object interaction
 - Mouse hover detection and click actions
-- Room-based navigation.
-- MIDI music.
+- Room-based navigation with unique identifiers
 - Retro gaming experience in MS-DOS
 
 ## Getting Started
