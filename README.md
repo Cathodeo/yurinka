@@ -6,7 +6,8 @@ Yurinka is a point-and-click game where every room is identified by an integer (
 A preview of the first chapter is available.
 (It can also be compiled at this point)
 
-[![First part and exploration](https://img.youtube.com/vi/RALh5yZn0ro/maxresdefault.jpg)](https://www.youtube.com/watch?v=RALh5yZn0ro&list=PLQbQSDkKiQ_uVIPC2KEMWyusfSR4CJvC9)
+[![First and second part playlist](![STO003](https://github.com/user-attachments/assets/d674f8d8-3e37-4a3b-be46-f96bd901f3c4)
+)](https://www.youtube.com/watch?v=RALh5yZn0ro&list=PLQbQSDkKiQ_uVIPC2KEMWyusfSR4CJvC9)
 
 
 ## Features
