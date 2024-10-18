@@ -13,6 +13,6 @@ int choice_picker();
 
 //VN_Gamemodes
 
-int parse_vnmode(int text_updated, int text_scroll, int size, FILE *file, int line_numbers[6], char (*textlines)[64], char (*choices)[16], char (*imagename)[64], char (*musicname)[64],  char (*sfx_filenames)[64], char (*ambiance_filenames)[64]);
+int parse_vnmode(int text_updated, int text_scroll, int size, FILE *file, int line_numbers[6], char (*textlines)[64], char (*choices)[16], char (*imagename)[64], char (*musicname)[64], char (*sfx_filenames)[64], char (*ambiance_filenames)[64]);
 
 #endif

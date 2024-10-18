@@ -8,6 +8,8 @@
 
 extern BITMAP *buffer;
 // Declare the function that will be defined in draw.c
+void gradient_fill(BITMAP *bmp, int x1, int y1, int x2, int y2, int color1, int color2);
+void rounded_rectfill(BITMAP* buffer, int x1, int y1, int x2, int y2, int color);
 void draw_dialog_base(BITMAP* buffer);
 void choice_picker_base(BITMAP* buffer, int n_choices);
 void choice_picker_text(const char *choice1, const char *choice2, const char *choice3, int n_choices);

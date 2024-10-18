@@ -84,7 +84,7 @@ int main(void) {
     // Change between gameplays or stay the same (type_gp is a fallback that contains the last value stored)
     switch (type_gp) {
         case 1:
-            type_gp = parse_vnmode(text_updated, text_scroll, size, file, line_numbers, textlines, choices, imagename, musicname, sfxfile, ambiancefile);
+            type_gp = parse_vnmode(text_updated, size, file, line_numbers, textlines, choices, imagename, musicname, sfxfile, ambiancefile);
             break;
 
        case 2:
