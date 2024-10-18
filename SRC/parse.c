@@ -143,7 +143,7 @@ int choice_picker() {
 int parse_vnmode(int text_updated, int text_scroll, int size, FILE *file, int line_numbers[6], char (*textlines)[64], char (*choices)[16], char (*imagename)[64], char (*musicname)[64], char (*sfx_filenames)[64], char (*ambiance_filenames)[64]) {
     int nextmode = 1;
 	
-    if (key[KEY_ENTER] && text_updated == 0 && text_scroll == 1) {
+    if (key[KEY_ENTER] && text_updated == 0) {
         next_page(line_numbers, size, 0);
         nextmode = text_roll(file, line_numbers, textlines, choices, imagename, musicname, sfx_filenames, ambiance_filenames); // Parse the new text
         text_updated = 1;                                  // Mark the text as updated
@@ -151,9 +151,7 @@ int parse_vnmode(int text_updated, int text_scroll, int size, FILE *file, int li
     }
 
     // Draw the text and choices                
-    triple_dialog(textlines[0], textlines[1], textlines[2]);
-    choice_picker_base(buffer, 3);
-    choice_picker_text(choices[0], choices[1], choices[2], 3);
+    triple_dialog_typewriter(textlines[0], textlines[1], textlines[2]);
 
     // Blit the buffer to the screen
     blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);

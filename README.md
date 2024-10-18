@@ -3,14 +3,6 @@
 
 Yurinka is a point-and-click game where every room is identified by an integer (room ID) and contains up to 3 objects. When the mouse hovers over an object, an option appears, and actions can be performed with a left-click. The game is being developed using Allegro and runs on MS-DOS.
 
-A preview of the first chapter is available.
-(It can also be compiled at this point)
-![STO003](https://github.com/user-attachments/assets/d674f8d8-3e37-4a3b-be46-f96bd901f3c4)
-
-
-https://www.youtube.com/watch?v=RALh5yZn0ro&list=PLQbQSDkKiQ_uVIPC2KEMWyusfSR4CJvC9
-
-
 ## Features
 
 - Point-and-click mechanics
@@ -37,15 +29,14 @@ To run Yurinka, you'll need:
    cd yurinka
    ```
 
-2. Compile the game using DJGPP or GCC:
+2. Compile the game using DJGPP:
    ```bash
    make
    ```
 
 3. Run the game:
-
-   ./yurinka (Linux)
-   yurinka.exe (DOS)
+   ```bash
+   ./yurinka.exe
    ```
 
 ### Game Controls
