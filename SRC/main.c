@@ -5,12 +5,18 @@
 #include <parse.h>
 #include <music.h>
 #include <room.h>
+#include <battle.h>
+#include <battle_data.h>
 
 #define TEXTBOX_WPOS 58
 #define TEXTBOX_HPOS 344
 #define TEXTBOX_WIDTH 300
 
 int main(void) {
+	
+
+
+	int selection = 0;
     int current_file = 1;
     int type_gp = 1;
     int text_scroll = 1;
@@ -21,7 +27,10 @@ int main(void) {
     int gamemode_change = 1;
     int text_updated = 0; // Track if the text has been updated
     int switches = 0;
-
+    
+    //Battle stuff
+    
+  
     // Define arrays to hold text and choices
     char textlines[3][64];
     char choices[3][16];
@@ -36,7 +45,16 @@ int main(void) {
 	
     Room current_room;
     int room_tracker = 1;
-   
+	Battle_Tracker tracker;
+    tracker.rotation = 0;
+    tracker.ready = 0;
+    int battle_id = 0;
+    int max_hp = character_list[tracker.rotation].health;
+    int current_hp = max_hp;
+    int status;
+    int char_id;
+    int status_id;
+    
 
     allegro_init();
     install_timer();
@@ -165,6 +183,77 @@ int main(void) {
     }
 	}
     break;
+    
+    
+    case 3:
+    
+    
+    install_mouse();
+    poll_mouse();
+    enable_hardware_cursor();
+    show_mouse(screen);
+    selection = 0;
+    //Draw battle UI and render the background
+    draw_battleui_base(buffer);
+    draw_battle_ui(buffer, current_hp, max_hp, char_id, status);
+    load_battle_background(buffer, battle_id);	
+    printf("Debug: Drawing graphical elements finished");
+    //Init group of enemies
+    
+    //Init with three enemy ids.
+    //For all practical purpose, the enemy with id 0
+    //Is not rendered or considered alive
+    int enemy_party_id[3];
+    Foe enemy_party[3];
+    for (int i = 0; i < 3; i++)
+    {
+    enemy_party_id[i] = get_enemy_party(battle_id)[i];
+    enemy_party[i] = foe_list[enemy_party_id[i]];
+    //If the enemy id on the party is not 0
+	//(Not empty), initialize as up (alive)
+		if (enemy_party_id[i] > 0)
+		{
+		 tracker.foe_up[i] = 1;
+		 load_battle_foe(buffer, battle_id, i, (40 + (120 * i)));
+		}
+	}
+	printf("Debug: Loaded enemy party, drawn enemy foes");
+    switch (tracker.rotation)
+    {
+	case 0:
+    draw_portrait(buffer, "IMG/FACE1.PCX");
+    break;
+    case 1:
+    draw_portrait(buffer, "IMG/FACE3.PCX");
+    break;
+	case 2:
+    draw_portrait(buffer, "IMG/FACE2.PCX");
+    break;
+	}
+	printf("Debug: Loaded portrait");
+	//Debug. To expand!
+	for (int i = 0; i < 3; i++) {
+	draw_move_card(buffer, character_list[tracker.rotation].moveset_base[i], 180 + (i * 72));
+	}
+    blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+    //while (selection == 0)
+	//{moveSelection(tracker.rotation);
+	//blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+	//rest(10);}
+    while (type_gp != 2 && selection == 0) 
+                        { 
+                        rest(50);
+						if (tracker.rotation < 2)
+						{tracker.rotation++;}
+						else
+						{tracker.rotation = 0;}
+						status = character_list[tracker.rotation].health;
+						char_id = tracker.rotation;
+						status_id = character_list[tracker.rotation].status;
+                        }
+                        rest(100);
+    break;
+    
 }
 
 }

@@ -7,7 +7,7 @@
 This is the city of Baltycmorsk. Sitting on the western border
 of the former Popular Union. Nowadays, a foreigner would
 assume, looking at its pretty 19th century landscape
-
+&gamemode 3
 
 
 and luxurious skyscrappers, that its people is  

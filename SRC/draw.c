@@ -10,7 +10,15 @@
 #define CHOICE_COLOR makecol(173, 216, 230) // Light blue for choice boxes
 #define CHOICE_SPACING 10
 #define MAX_LINE_LENGTH 64     // Maximum number of characters per line
-#define CHAR_DELAY 5          // Delay between characters (in milliseconds)
+#define CHAR_DELAY 5   
+#define DARK_RED makecol(139, 0, 0)
+#define RED makecol(255, 0, 0)
+#define ORANGE makecol(255, 165, 0)
+#define YELLOW makecol(255, 255, 0)
+#define GREEN makecol(0, 255, 0)
+#define TEAL makecol(0, 128, 128)
+#define BLUE makecol(0, 0, 255)  
+#define PURPLE makecol(0, 125, 255)    
 
 // Function to render a single line of text with typewriter effect
 void typewriter_text(BITMAP *buffer, const char *text, int x, int y, int color) {
@@ -44,6 +52,179 @@ void draw_dialog_base(BITMAP* buffer) {
     rectfill(buffer, 54, 18, 578, 320, makecol(55, 55, 55));  // Medium blue rectangle for dialog
     rect(buffer, 52, 338, 582, 412, makecol(0, 0, 120));
 }
+
+
+void draw_battleui_base(BITMAP* buffer) {
+	draw_gradient_background(buffer, 0, 0, SCREEN_W, SCREEN_H);
+	rectfill(buffer, 166, 325, 578, 345, makecol(0, 0, 120));
+	rectfill(buffer, 166, 328, 324, 343, makecol(0, 0, 200));
+	rectfill(buffer, 344, 328, 558, 343, makecol(0, 0, 200));
+	rectfill(buffer, 54, 336, 156, 440, makecol(0, 0, 120));
+	rectfill(buffer, 166, 365, 578, 440, makecol(0, 0, 120));
+	rectfill(buffer, 169, 368, 575, 438, makecol(0, 0, 200));
+	rectfill(buffer, 54, 375, 578, 440, makecol(0, 0, 120));
+	rectfill(buffer, 57, 378, 575, 438, makecol(0, 0, 200));
+	
+}
+
+void draw_portrait(BITMAP* buffer, const char *image_path)
+
+{
+	BITMAP *image = load_pcx(image_path, NULL);
+    if (!image) {
+        allegro_message("Failed to load image: %s", image_path);
+        return;
+    }
+    blit(image, buffer, 0, 0, 56, 338, image->w, image->h);
+	
+}	
+
+void draw_move_card(BITMAP *buffer, int move_id, int w)
+{
+	BITMAP  *image = load_pcx(move_list[move_id - 1].icon, NULL);
+	    if (!image) {
+        allegro_message("Failed to load move icon");
+        printf("Loading move %d failed", move_list[move_id].id);
+        return;
+    }
+    rect(buffer, w - 2, 370, image->w + w + 2, image ->h + 370, makecol(0, 0, 0));
+    blit(image, buffer, 0, 0, w, 372, image->w, image->h);
+    destroy_bitmap(image);
+} 
+	
+void chara_info(BITMAP* buffer, int char_id, int current_hp, int status_id)
+{
+    const char *chara_name;
+    const char *chara_status = "OK"; // Default value if no match is found
+    
+    // Hardcoded character names
+    switch(char_id){
+    case 0:
+        chara_name = "Yurinka";
+        break;
+    case 1:
+        chara_name = "Markus";
+        break;
+    case 2:
+        chara_name = "Ola";
+        break;
+    default:
+        chara_name = "Unknown";
+        break;
+    }
+
+    // Search for the status in status_list
+    for (int i = 0; i < 9; i++) {
+        if (status_list[i].id == status_id) {
+            chara_status = status_list[i].name;
+            break;
+        }
+    }
+
+    // Display character info
+    textout_ex(buffer, font, chara_name, 178 , 332, makecol(255, 255, 255), -1);
+    textout_ex(buffer, font, chara_status, 356 , 332, makecol(255, 255, 255), -1);
+}
+
+void display_attack_info(int selection, int character)
+{textout_ex(buffer, font, move_list[selection + (character * 3)].move_name, 198 , 332, makecol(255, 255, 255), -1);
+}
+
+void display_choice(int choice)
+{textprintf_ex(buffer, font, 61, 377, makecol(255,255,255) , -1, "Current choice: %d", choice);
+}
+
+const char* get_hp_status(int current_hp, int max_hp) {
+    float percentage = (float)current_hp / (float)max_hp;
+
+    if (percentage <= 0.10) {
+        return "CRITICAL";
+    } else if (percentage <= 0.25) {
+        return "LOW";
+    } else if (percentage <= 0.40) {
+        return "MID-LOW";
+    } else if (percentage <= 0.60) {
+        return "MID";
+    } else if (percentage <= 0.80) {
+        return "MID-HIGH";
+    } else if (percentage <= 0.95) {
+        return "HIGH";
+    } else {
+        return "FULL";
+    }
+}
+
+
+void draw_hp_bar(BITMAP* buffer, int current_hp, int max_hp, int x, int y, int width, int height) {
+    float percentage = (float)current_hp / (float)max_hp;
+    int segments = 7;  // We have 7 segments total
+    int segment_width = width / segments;
+    
+    // Assign colors based on segment index (from critical to full HP)
+    int colors[7] = {DARK_RED, RED, ORANGE, YELLOW, GREEN, TEAL, BLUE};
+    
+    // Draw the active segments
+    for (int i = 0; i < segments; i++) {
+        if (percentage > (float)i / segments) {
+            rectfill(buffer, x + (i * segment_width), y, x + ((i + 1) * segment_width), y + height, colors[i]);
+        } else {
+            // Draw an empty or darkened segment for inactive portions
+            rectfill(buffer, x + (i * segment_width), y, x + ((i + 1) * segment_width), y + height, makecol(50, 50, 50));
+        }
+    }
+    
+    // Optionally, draw a border around the HP bar
+    rect(buffer, x, y, x + width, y + height, makecol(255, 255, 255));
+}
+
+
+void draw_hp_status(BITMAP* buffer, int current_hp, int max_hp, int x, int y) {
+    const char* status_text = get_hp_status(current_hp, max_hp);
+    
+    textout_ex(buffer, font, status_text, x, y, makecol(255, 255, 255), -1);
+}
+
+void load_battle_background(BITMAP *buffer, int battle_id)
+{
+	BITMAP *image = load_pcx(get_battle_background(battle_id), NULL);
+	  if (!image) {
+        allegro_message("Failed to load image");
+        return;
+    }
+    blit(image, buffer, 0, 0, 54, 18, image->w, image->h);
+    // Destroy the image bitmap as it is no longer needed
+    destroy_bitmap(image);
+    
+}
+ 
+void load_battle_foe(BITMAP *buffer, int battle_id, int foe_index, int w)
+
+{	
+
+	BITMAP *image = load_pcx(get_enemy_sprite(foe_index, battle_id), NULL);
+    set_trans_blender(255, 0, 255, 0);
+    masked_blit(image, buffer, 0, 0, w , 20, image->w, image->h);
+    // Destroy the image bitmap as it is no longer needed
+    destroy_bitmap(image);    
+}
+	
+	
+
+
+
+void draw_battle_ui(BITMAP* buffer, int current_hp, int max_hp, int char_id, int status_id) {
+    // Character info (name, status)
+    draw_battleui_base(buffer);
+    chara_info(buffer, char_id, current_hp, status_id);
+
+    // Draw HP bar
+    draw_hp_bar(buffer, current_hp, max_hp, 178, 352, 200, 10);  // Adjust position/size as needed
+
+    // Display vague HP status text
+    draw_hp_status(buffer, current_hp, max_hp, 400, 353);
+}
+
+
 
 
 void triple_dialog(const char *text1, const char *text2, const char *text3) {
@@ -221,3 +402,5 @@ void load_blit_transparent(const char *image_path, BITMAP *buffer, int dst_x, in
     // Destroy the image bitmap as it is no longer needed
     destroy_bitmap(image);
 }
+
+
