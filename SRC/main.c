@@ -12,6 +12,21 @@
 #define TEXTBOX_HPOS 344
 #define TEXTBOX_WIDTH 300
 
+
+int is_self(int allyup, int index_self, int index_allypos)
+{
+	if (allyup == 0)
+	{return 0;}
+	if (index_self == index_allypos)
+	{return 0;}
+	else
+	{return 1;}
+	
+}
+
+
+
+
 int main(void) {
 	
 
@@ -54,7 +69,10 @@ int main(void) {
     int status;
     int char_id;
     int status_id;
-    
+    int current_target = 0;
+    int party_battle_selections[3];
+    int foe_target_selection[3];
+    int ally_up[3];
 
     allegro_init();
     install_timer();
@@ -187,7 +205,9 @@ int main(void) {
     
     case 3:
     
-    
+    ally_up[0] = 1;
+    ally_up[1] = 2;
+    ally_up[2] = 3;
     install_mouse();
     poll_mouse();
     enable_hardware_cursor();
@@ -195,7 +215,7 @@ int main(void) {
     selection = 0;
     //Draw battle UI and render the background
     draw_battleui_base(buffer);
-    draw_battle_ui(buffer, current_hp, max_hp, char_id, status);
+    draw_battle_ui(buffer, current_hp, max_hp, tracker.rotation, status);
     load_battle_background(buffer, battle_id);	
     printf("Debug: Drawing graphical elements finished");
     //Init group of enemies
@@ -236,21 +256,61 @@ int main(void) {
 	draw_move_card(buffer, character_list[tracker.rotation].moveset_base[i], 180 + (i * 72));
 	}
     blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
-    //while (selection == 0)
-	//{moveSelection(tracker.rotation);
-	//blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
-	//rest(10);}
-    while (type_gp != 2 && selection == 0) 
-                        { 
+    while (selection == 0)
+	{
+	poll_mouse();
+	selection = moveSelection(tracker.rotation);
+	printf("Executed selection checker with result: %d \n", selection);
+	blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+	rest(10);
+	}
+	while (current_target == 0)
+	{
+		if (is_move_ally_targeted(selection, tracker.rotation) == 1)
+		{current_target = choiceShow_ally(
+		is_self(ally_up[0], tracker.rotation, 0),
+		is_self(ally_up[1], tracker.rotation, 1),
+		is_self(ally_up[2], tracker.rotation, 2)
+		);
+		blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+		rest(20);}
+		else {
+		current_target = choiceShow(enemy_party_id[0], enemy_party_id[1], enemy_party_id[2]);
+		blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+		rest(20);}
+	}					
+						
+						foe_target_selection[tracker.rotation] = current_target;
+						party_battle_selections[tracker.rotation] = selection;
                         rest(50);
 						if (tracker.rotation < 2)
 						{tracker.rotation++;}
 						else
 						{tracker.rotation = 0;}
 						status = character_list[tracker.rotation].health;
-						char_id = tracker.rotation;
+						draw_battleui_base(buffer);
+                        draw_battle_ui(buffer, current_hp, max_hp, tracker.rotation, status);
 						status_id = character_list[tracker.rotation].status;
-                        }
+						switch (tracker.rotation)
+						{
+						case 0:
+						draw_portrait(buffer, "IMG/FACE1.PCX");
+						break;
+						case 1:
+						draw_portrait(buffer, "IMG/FACE3.PCX");
+						break;
+						case 2:
+						draw_portrait(buffer, "IMG/FACE2.PCX");
+						break;
+						}
+						printf("Debug: Loaded portrait");
+						//Debug. To expand!
+						for (int i = 0; i < 3; i++) {
+						draw_move_card(buffer, character_list[tracker.rotation].moveset_base[i], 180 + (i * 72));
+						}
+						blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+						selection = 0;
+						current_target = 0;
                         rest(100);
     break;
     

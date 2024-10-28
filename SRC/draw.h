@@ -14,6 +14,7 @@ void typewriter_text(BITMAP *buffer, const char *text, int x, int y, int color);
 void draw_gradient_background(BITMAP* buffer, int x1, int y1, int x2, int y2);
 void draw_dialog_base(BITMAP* buffer);
 void draw_battleui_base(BITMAP* buffer);
+void display_enemy_choices(int enemy1, int enemy2, int enemy3);
 void draw_portrait(BITMAP* buffer, const char *image_path);
 const char* get_hp_status(int current_hp, int max_hp);
 void draw_hp_bar(BITMAP* buffer, int current_hp, int max_hp, int x, int y, int width, int height);
@@ -30,5 +31,7 @@ void load_blit_transparent(const char *image_path, BITMAP *buffer, int dst_x, in
 void load_battle_background(BITMAP *buffer, int battle_id);
 void load_battle_foe(BITMAP *buffer, int battle_id, int foe_index, int w);
 void display_attack_info(int selection, int character);
+void draw_superui();
+void display_ally_choices(int ally1, int ally2, int ally3);
 
 #endif  // End of include guard

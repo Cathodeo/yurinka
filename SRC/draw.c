@@ -127,8 +127,31 @@ void chara_info(BITMAP* buffer, int char_id, int current_hp, int status_id)
 }
 
 void display_attack_info(int selection, int character)
-{textout_ex(buffer, font, move_list[selection + (character * 3)].move_name, 198 , 332, makecol(255, 255, 255), -1);
+{textout_ex(buffer, font, move_list[(selection - 1) + (character * 3)].move_name, 62 , 274, makecol(255, 255, 255), -1);
 }
+
+void display_enemy_choices(int enemy1, int enemy2, int enemy3)
+{
+  if (enemy1 != 0) {textprintf_ex(buffer, font, 62, 274, makecol(255,255,255) , -1, "Press 1 to attack: %s", foe_list[enemy1].name);
+  }
+  if (enemy2 != 0) {textprintf_ex(buffer, font, 62, 282, makecol(255,255,255) , -1, "Press 2 to attack: %s", foe_list[enemy2].name);
+  }
+  if (enemy3 != 0) {textprintf_ex(buffer, font, 62, 288, makecol(255,255,255) , -1, "Press 3 to attack: %s", foe_list[enemy3].name);
+	}
+}
+
+void display_ally_choices(int ally1, int ally2, int ally3)
+{
+  if (ally1 != 0) 
+  {textprintf_ex(buffer, font, 62, 274, makecol(180,255,255) , -1, "Press 1 to assist: Yurinka");
+  }
+  if (ally2 != 0) {textprintf_ex(buffer, font, 62, 282, makecol(255,180,255) , -1, "Press 2 to assist: Markus");
+  }
+  if (ally3 != 0) {textprintf_ex(buffer, font, 62, 288, makecol(180,180,255) , -1, "Press 3 to assist: Ola");
+	}
+}
+
+
 
 void display_choice(int choice)
 {textprintf_ex(buffer, font, 61, 377, makecol(255,255,255) , -1, "Current choice: %d", choice);
@@ -195,6 +218,11 @@ void load_battle_background(BITMAP *buffer, int battle_id)
     // Destroy the image bitmap as it is no longer needed
     destroy_bitmap(image);
     
+}
+
+void draw_superui() {
+	rectfill(buffer, 58, 270, 548, 310, makecol(0, 0, 120));
+	rectfill(buffer, 60, 272, 546, 308, makecol(0, 0, 220));
 }
  
 void load_battle_foe(BITMAP *buffer, int battle_id, int foe_index, int w)

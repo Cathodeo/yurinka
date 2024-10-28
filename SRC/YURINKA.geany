@@ -29,15 +29,13 @@ long_line_column=72
 
 [files]
 current_page=5
-FILE_NAME_0=209;C++;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FYURINKA%2FSRC%2Fbattle.h;0;4
-FILE_NAME_1=7017;C;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FYURINKA%2FSRC%2Fmain.c;0;4
-FILE_NAME_2=2071;C;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FYURINKA%2FSRC%2Fbattle.c;0;4
-FILE_NAME_3=1666;C++;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FYURINKA%2FSRC%2Fdraw.h;0;4
-FILE_NAME_4=2777;C;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FYURINKA%2FSRC%2Froom.c;0;4
-FILE_NAME_5=6390;C;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FYURINKA%2FSRC%2Fdraw.c;0;4
-FILE_NAME_6=190;None;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FYURINKA%2FSTORY%2F001A.TXT;0;4
-FILE_NAME_7=1869;C;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FYURINKA%2FSRC%2Fbattle_data.c;0;4
-FILE_NAME_8=114;C++;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FYURINKA%2FSRC%2Fbattle_data.h;0;4
+FILE_NAME_0=9162;C;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FYURINKA%2FSRC%2Fmain.c;0;4
+FILE_NAME_1=5454;C;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FYURINKA%2FSRC%2Fdraw.c;0;4
+FILE_NAME_2=1811;C++;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FYURINKA%2FSRC%2Fdraw.h;0;4
+FILE_NAME_3=4388;C;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FYURINKA%2FSRC%2Fbattle.c;0;4
+FILE_NAME_4=418;C++;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FYURINKA%2FSRC%2Fbattle.h;0;4
+FILE_NAME_5=1941;C;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FYURINKA%2FSRC%2Fbattle_data.c;0;4
+FILE_NAME_6=214;C++;0;EUTF-8;1;1;0;%2Fhome%2Ftmmartin%2FYURINKA%2FSRC%2Fbattle_data.h;0;4
 
 [VTE]
 last_dir=/home/tmmartin
