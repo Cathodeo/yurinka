@@ -4,39 +4,39 @@
 
 
 
-I apologize for not notifying about my
-presence on the control room, but I hope 
-Miss Yurinka has not forgotten about the appointment
+Miss Yurinka, did you finish with the preparation
+of today's appointment?
+And may you excuse me for appearing from the control...
 &music OGG/VAN.OGG
 
 
-we have today in the river of BaltycMorsk with
-our patron, to discuss the continuity of the funding
-of our great mission.
+Yurinka: GYAAAAAAAAAAAAAAAAAAAAAAH!
+Markus. Who authorized you to enter the control room
+by surprise? I thought I was alone in the base today!
 &stopambiance
 
 
-...
-...
-Yurinka: eh...
+Markus: Miss Yurinka, you may have been absorbed
+by your valuable efforts of hacking thingamabobbers,
+but let me remember we had an appointment to discuss
 
 
 
-... of course Markus! I was preparing myself
-for this moment. I was not planning on spending the
-rest of the evening watching RadioTube while snacking
+the details of the operation that was revealed during
+last week's meeting. Unfortunately, it seems the miss
+was too busy fiddling with something on her radio...
 
 
 
-or taking a nap. The mission of our organization is the
+...Markus, com'on! The mission of our organization is the
 only thing that occupies my mind night and day!
 And what were you doing the whole day, anyways?
 
 
 
-Markus: I shall inform, Miss Yurinka, about the activities
-I conducted today during my workday, as requested:
-
+Markus: With delight i will report, Miss, an exhaustive
+list of the activities I conducted today during
+here at the base while you were busy, as requested:
 
 
 
@@ -53,7 +53,7 @@ a deceased mouse that started decomposing next to the sofa.
 
 
 Unfortunately, we forgot to provision a trash bin so I
-decided to also place the inert rodent on the same fridge,
+decided to also place the rodent on the unused room fridge,
 as the low temperatures would slow down its decay until
 
 
@@ -64,51 +64,51 @@ container for disposal of biological rests...
 
 
 
-Yurinka: Yikes! I am going to puke if you keep going.
-I think it was enough information for today.
-What's the plan with the patron?
+Yurinka: Yikes! How long was that fridge unused?
+I think it was enough information and chit-chat for today.
+May you remind me the whole plan with the patron?
 
 
 
-Markus: Pardon me Miss Yurinka, but didn't you just say
-you spent today's day preparing for the meeting?
-
+Markus: Pardon me Miss Yurinka, but in my humble opinion,
+both you and Miss Ola should pay more attention to the
+couple of commands we get from the patron the whole year...
 
 
 
 Yurinka: You are supposed to take care of the security
 of the perimeter, not to act as Ola's personal assistant!
-Tell me the details of the mission!
+That rodent was already a security breach. Gimme the infos!
 
 
 
 Markus: We have an appointment on BaltycMorsk's river marina
 in exactly 42 minutes. The patron has good news: We have 
-a clear action plan to start dismantling the regime.
+for the first time ever an action plan to sabotage our tyranny.
 
 
 
 His messenger will meet us on the Marina to communicate
 his action plan privately. In order to not draw attention from
-the network of city cameras, we will pass as
+the network of city cameras, we used a little bit of bribery
 
 
 
-the catering of a Yacht party.
-
-Yurinka: Did you forget none of us has a driving license?
-
-
-
-Markus: Miss Ola passed the exams successfully on her 8th attempt
-last week. We finally can stop commuting on bycicle during missions.
-The patron has even provided us with a rental vehicle for the enterprise.
+sauce on the authorities to turn them off around the marina
+and play hilarous raci..old cartoons on the broadcast instead.
+About the transport... more good news to us!
 
 
 
-Yurinka: May god be with us...
+Miss Ola passed the exams successfully on her 8th attempt
+last week. No further need to commute to the city by bycicle.
+A rental van has been provided while we save for a moped.
 
 
+
+Yurinka: I fear for my life with Ola behind the steering
+wheel. Hard pass! I'd rather take the bus.
+She has an absolute disregard for safety and sobriety.
 
 
 
@@ -118,7 +118,7 @@ Yurinka: May god be with us...
 &background IMG/PNC005.PCX
 
 
-.
+
 
 
 &sprite IMG/SPRMAR.PCX
@@ -130,37 +130,36 @@ to the city center.
 
 
 
-Yurinka: This is assuming we don't crash.
-Hold a second. What was the BisonGrass for if Ola already
-knew she would have to drive today???
+Yurinka: And lest than ten seconds to become organ donors.
+Hold a second. What was the BisonGrass for if Ola has her
+first time driving today?
 &background IMG/MOT002.PCX
 
 
-Jeez! That's a current year van. I am no expert 
-on these things, but it feels as if we really got a boost
-of budget from the patron.
+Jeez! That's a shining, cute new van! No clue about vans,
+but this might cost a couple of thousand million coins,
+Such is the lavish life of the elites! 
 
 
 
-Markus: Miss, it seems you have again failed to pay 
-attention to the intel I provided. This van is only a
-temporary lease for this particular mission.
+Markus: Miss, weren't you part of the elites as a child
+anyways? You might even have traveled across the Union when 
+the Union was still an Union and not a singleton.
 
 
 
-Yurinka: So back to riding bycicles we go...
+Yurinka: That was ages ago! I only have fuzzy memories...
 The pittance I earn won't get me to even pay a basic
 Motoreczka. I would look ridiculous riding that tho.
 
 
 
 Markus: In my honest opinion, I think it would be
-appropiate for the lady's dimensions.
+appropiate for the lady's dimensions...
 
 
 
-
-Yurinka: Who are you calling a midget, you albino gorilla?
+Yurinka: Markus! I command you to shut up.
 Let's cut the chatter and see how long we take to end 
 up with our bowels spread on the highway.
 &background IMG/MOT003.PCX
@@ -168,73 +167,73 @@ up with our bowels spread on the highway.
 
 Yurinka: Wow! We could travel to the dark sea
 on this van. If the government ever issued us a permit
-to leave the country, that is...
+to leave the country, which won't happen in eons.
 
 
 
-And by the way... here is our driver.
-
-
+Ah. Look at who we have here. Woohoo!
+It's our favourite engineer covered in engine grease,
+smelling like liquor and rust. The magnificient...
 &sprite IMG/SPROLA.PCX
 
 
-Nice outfit Ola! 
+Aleksandra Pietruszka! 
 Do you fancy a coffee to recover from the 
 bottle you gulped down a couple of hours ago?
 
 
 
-Ola: I only took a couple of shots, then spent
-the rest of the day studying today's plan.
-If we can't convince the patron today to 
+Ola: I only took a couple of shots, so will you
+when your hacking attempts give the government your
+location and they pew-pew you into oblivion.
 
 
 
-Keep his funding, it's over for the organization,
-the base and the mission. You spend the day bitching
-about how improductive we are, but what have you done
+Yurinka: At least they pew pew! Your zippy zapper
+inventions only make kaboom and explode in our hands.
+They are of poo-poo quality!
 
 
 
-today apart from watching propaganda and reviewing
-conspiracy theory videocassettes about "that" accident?
-You are always avoiding to participate in operations!
+Ola: Your hacking is poo poo! And I am not going to be
+your minion a second more. I will tell my father to
+replace you on the org with a handsome boy.
 
 
 
-Yurinka: These are not conspiracy theories! 
-And I am about to crack the security of radionet's channel
-7, which is what the patron assigned me!
+Yurinka: I will tell MY father to replace you with 
+a Siberian dog. Unless you, they are know for being
+the only breed that does. Not. Bark! 
 
 
 
-Ola: You have spent the last six months pretending
-that you are trying to crack RadioNet, but so far 
-you have not shown us any progress. We both know
+Ola: Who are you calling a dog, you little sluth?
+Or whatever that long nailed animal that sleeps all
+day and clings on trees is called.
 
 
 
-the only reason you belong to this organization is
-that you have family bonds with people from the
-government. You are sabotaging our mission!
+Yurinka: I don't have time to make my nails every weekend,
+I am also going through a hard time on my new job...
+You are so mean to me for absolutely no reason...
 
 
 
-Yurinka: How dare you? You harpy!
-I admit I have not been the most productive lately,
-but why do you question my commitment to the cause?
+Ola: No reason except all of the times you mock
+me throughout the day. And it's not like we interact
+much since you spend all day on that monitoring room...
 
 
 
-You know what? I am going to carry this mission
-without your help! I will request the patron for
-you to be replaced.
+Yurinka: I spend my time there because we don't have
+anything useful to do. Plus I am so close to beat
+the last level of solitaire on the terminal.
 
 
 
-Ola: Markus! Tell this entitled bitch to stop
-thinking she is the leader of our movement!
-
+Ola: Markus! Why do we take commands from her?
+At least can we get a leader that does productive stuff, 
+like beating Minesweeper instead?
 &background IMG/MOT003.PCX
 &sprite IMG/SPRMAR.PCX
 
@@ -251,13 +250,13 @@ them the grace blow, but we need to remain
 
 
 united despite our personal differences...
-Otherwise, we all have a personal life to attend,
-and we might aswell abandon this mission.
+The ladies could be such nice friends if you
+stopped calling each other animal names...
 
 
 
-Yurinka: Whatever...
-I won't apology to this venomous viper,
+Yurinka: Whatever. 
+I can't get along with this venomous viper,
 but you have a point, the mission is our priority.
 
 
@@ -268,27 +267,15 @@ bridge and take us all together?
 
 
 
-Yurinka: I am surprised you have not done so
-already, you bottle guzzler...
-
+Yurinka: Did you spend the first 7th attempts
+of passing the driving license test practicing 
+for this moment? 
 &background IMG/MOT005.PCX
 
 
-Ola: Markus! Tell this old prick to stop
-insulting my persona!
-
-
-
-
-Markus: Calm down ladies. We are almost 
-at the destination. Kindly settle your differences
-for the next quarter of hour.
-
-
-
 Yurinka: (I think I should have come with 
-empty stomach after all... this girl is driving
-like a maniac and I feel terrible) 
+empty stomach after all... between the dead mouse story and
+and her reckless driving I feel the nausea of the century) 
 &stopambiance
 
 
@@ -306,17 +293,17 @@ Yurinka, could you please use the communicator to
 
 verify that no transmission might be spying our conversations
 or reporting our locations?
-We could all land in jail if sensitive information
+Once I found a microphone inside a fortune cookie.
 
 
 
-ends up in the hands of the government.
+Since then, I always make sure to chew 10 times
+before I swallow my food. It's also nice for 
+digestion and to absorb the iron and coltan!
 
 
 
-
-
-Yurinka: Alrighty. Regarding your part of the job.
+Yurinka: Sector clear. No surveillance on the perimeter.
 Have you noticed any strange movements on the base since
 we discussed the plan... eh, when was it?
 
@@ -324,13 +311,13 @@ we discussed the plan... eh, when was it?
 
 Ola: Exactly a week ago. We were throwing a party to
 celebrate we finally had something useful to do.
-Were you so wasted you forgot?
+You started snoring like a pig after half an hour...
 
 
 
-Yurinka: I have never drank a single sip of alcohol!
-And you should quit it too. I don't like you, but it
-would be a waste for someone so young to...
+Yurinka: Stop the animal name calling!
+It's an order!
+I ate so many cinnamon donuts I could just not stay awake!
 
 
 
@@ -359,8 +346,8 @@ Yurinka: The passcode is "Pickled herrings with chorizo"
 
 
 Walter: My name is Walter. I bring the good news
-from our patron, still sitting on the high castle.
-The operation is going to be probable the most 
+from our patron overseas. 
+The operation is going to be probably the most 
 &sprite IMG/SPRWAL.PCX
 
 
@@ -400,9 +387,9 @@ carry a spy device in their pocket everywhere they go.
 
 
 
-Yurinka: Why do you always have to interrupt me
-when I talk, you bratty kid?
-Shut up and let adults talk about adult stuff!
+Yurinka: The government can trace our transmissors
+already. I am surprised they don't inject us a device to
+track us with our mandatory vaccines.
 
 
 
@@ -582,11 +569,17 @@ pieces. I might aswell try to save the day!
 
 ... so sudo here. Init here. Editing some
 text file here. Saving changes. How the hell
-do I exit vi? Argh. Ok, we are out!
+do I exit vi? Argh.
 
 
 
-Hurray! They were so incompetent to use
+I am sure vi has its days numbered. What an
+awkard editor to use! Why is there a terminal
+installed a drone anyways?
+
+
+
+....Hurray! They were so incompetent to use
 root/root as the passwords on the radiofrequency
 control. I am uploading through radionet
 
@@ -610,9 +603,9 @@ to run in drones. Ain't that cool?
 
 
 
-Ola: ....
-
-
+Ola: And what are the drones supposed to do
+with that BOOM? Will they blow themselves?
+Aren't they close enough for the sharpnel to reach us?
 
 
 
@@ -622,7 +615,7 @@ Drone: "Segfault. Aborting current operations"
 
 
 
-Yurinka: Suck that, my alcoholic nemesis!
+Yurinka: See? Apology to your hacker master overlady!
 It took me a minute to defeat these drones with 
 my prowess and ingenuity. Mwahahahahah...
 
@@ -648,17 +641,22 @@ firing to every living target in sight.
 
 Yurinka: Oh boys. It was too good to be true.
 I think we all screwed up on this operation after all...
-May god be with us...!
+Have we brought any weapons with us?
+
+
+
+Ola: I have a couple of inventions on my backpack.
+Hurry up and grab some!
 
 
 
 
+Yurinka: I don't want one of your guns to blow
+in my hands before the drones even start firing. 
+Big pass. Let's see how we can solve this with
 
 
 
-
-
-
-
+our ingenuity and needless violence!
 
 

@@ -166,7 +166,7 @@ int calculate_damage(int attack_power, int base_power, int defense) {
 int check_status_condition(int chara_foe, int actor_id) {
     // Retrieve status condition (0 = can act, 1 = paralyzed, etc.)
     int status = get_character_status(actor_id);
-    if (status == 1) { // Example: 1 could mean "paralyzed"
+    if (status == 6) { // Example: 1 could mean "paralyzed"
         int roll = rand() % 100;
         if (roll < 50) { // 50% chance that paralysis prevents action
             return 0;
@@ -191,9 +191,9 @@ int check_accuracy(int chara_foe, int actor_id, int move_id, int battle_id) {
 }
 
 // Checks if a secondary effect is applied based on the move's effect chance
-int check_special_effects(int move_id) {
+int check_special_effects(int move_id, int chance) {
     int effect_chance = get_move_effect_chance(move_id); // e.g., 30 for 30% chance
-    int roll = rand() % 100;
+    int roll = rand() % chance;
     
     return roll < effect_chance; // 1 if effect applies, 0 if not
 }

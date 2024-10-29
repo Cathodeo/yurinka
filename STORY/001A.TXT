@@ -4,116 +4,113 @@
 
 
 
-This is the city of Baltycmorsk. Sitting on the western border
-of the former Popular Union. Nowadays, a foreigner would
-assume, looking at its pretty 19th century landscape
+Welcome to the city of BaltycMorsk! 
+The ever-pretty capital of the Union of republics.
+(After the rest of republics parted ways, unfortunately)
+&gamemode 3
 
 
-
-and luxurious skyscrappers, that its people is  
+Our comrades spend their cheerful days
 thriving on a happy, careless life devoid of the
 perils of yesteryear.
 &music OGG/RADIO.OGG
 
 
 Such is the joy of the citizens of the 
-Union of Republics!, the forefront of world
-progress, where poverty and crime are nothing
+Union of Republics!, to be taken care on every
+single aspect of their lives by their father state.
+
+
+The working class works until exhaustion with a smile.
+Children study the history of our mission with joy!
+The old is never lonely with the ever present surveillance!
 
 
 
-but a memory of a brutish, backwards past.
-Children play on its centenarian streets.
-The old is never lonely!
+Technology is progressing full steam and now machines,
+machinery and macciatos are a daily part of the citizens 
+lives. (*Macciatos are subject to coffee supply restrictions*) 
 
 
 
-The working class is nowadays enjoying the delights
-of the modern world, dominated by the hottest
-technologies.
-
-
-
-There is only a little "perk" to enjoy the safety and
-niceties of this wonderful society on this wonderful
-city.
+Remember that whenever you need any hand, or want to
+report the misbehavior of that neighbor that you don't like,
+in every corner of the city you will find an agent of
 &background IMG/BAL002.PCX
 
 
-Do not dare to complain! The ministry of happiness
-has deployed a complex network of "agents" to help the
-dreadful wherever they might be needed.
+order and law. Thanks to the prevention of policy,
+our nation is able to tackle crime when it's still
+on the tought process of a well meant but confused brother.
 
 
 
-In every pintoresque corner of this city, 
-the government will ensure that you feel protected and
-that no crime whatsoever can ever occur.
+This fraternity makes our city a big happy family
+where nothing bad ever happens, as long as you
+behave and respect the virtuous authority of our leaders!
 
 
 
-In recent years. Violence and crime rates have plumetted
-to near zero. Our generous government is now tackling 
-the problem of sadness that unfortunately still affects
+The last mission that we still have in our hands
+is a step forward on ensuring a secure country!
+To prevent the perils of deviant thought before it
 
 
 
-A minority of the population. Do not think our benevolent
-state has forgotten the pain whithin the sad and the unwell.
-Together, we will succeed on the enterprise of ensuring
+is even thought. This will be possible only with the
+intervention of our new team of heroes! 
+We want to introduce therefore, the Ministry of Happiness! 
 
 
 
-we all live in harmony and peace. Both with each other
-and with ourselves!
-How is the government dealing with this issue you may think?
+A newly formed team of students and studettes of
+psychoanalysis or something like that. Using the power
+of our new mandatory, but totally anonymous surveys,
 
 
 
-That's a nice question!
-Take a look to this crew of heroes:
-
+so the state can intervene on the (rare) cases where
+our citizens still have some pain points on their
+otherwise delightful lives!
 &background IMG/BAL003.PCX
 
 
-Our popular republic has formed and deployed
-a team of specialists whose life mission is to find
-those in despair and enroll them on spiritual awakening
+Now, in addition to the surveillance that makes you
+feel always safe, and the agents that are always eager
+to give you a hand with any inquiry, BaltycMorks,
 
 
 
-holidays. Thus helping them to move on with their life
-and ensuring their intrusive thoughs can never pose any
-peril for the common citizen.
+as a pilot project, will deploy our team of experts
+on... psychosis?, pyrolisis? psylocibine?
+*I don't know what's on this part of the script, Mr.Piotr*
 
 
 
-But the sign of times is changing, and the slavic nation
-faces its greatest danger!
-
+Anyways. Despite the efforts put into ensuring our lives
+remain safe, predictable and repetitive, foreign powers
+are always ready to sabotage our righteous mission.
 &background IMG/BAL004.PCX
 
 
-Armed by foreign powers, lurking on the shadows and surviving
+Lurking on the shadows and surviving
 on the scraps obtained through the most despicable means, 
-an unit of sabotage has arised. While the forces of law
+an unit of sabotage has arised.
 
 
 
-will always keep their promise of making this
-the safest country in the world, the government of the people
-needs today your help.
+While the forces of law will always keep their promise of
+keeping ours as the safest country in the world,
+the government of the people needs today your help!
 &background IMG/BAL005.PCX
 
 
-If you ever detect suspicious activities aimed at undermining
-the stability of this our government, or disturb the peaceful
-lives of its people, do not hesitate to ping the government
+If you ever detect suspicious activities, like free thinking,
+chewing bubble gum, failure to comply with agent commands or deployment of mass destruction explosives, do not
 
 
-
-On the guvernamental radio-net address
-'prs.safetyborough'
+hesitate to ping the guvernamental radio-net address
+'prs.safetyborough' (Frequency 91.3)
 Together we can make this a prosperous and safe nation!
 &music OGG/SILENT.OGG
 
@@ -130,20 +127,20 @@ Together we can make this a prosperous and safe nation!
 
 
 
-Yurinka: The government propaganda is getting
-progressively more ridiculous. Yikes!
+Yurinka: I don't understand how they can record
+such a pile of ridiculous boot-licking nonsense without
+rolling on the floor out of laughter. 
 
-Transmission off
 
 
--All that I can think about is a hot 
+All that I can think about is a hot 
 cube of instant noodles. My stomach is growling.
-How dare they not even have a proper
+I barely stay enough time on this den to have
 &background IMG/BAL006.PCX
 
 
-catering service on this den.
-Jesus! I don't even remember where the fridge was.
+ever needed to visit the kitchen... Well well. 
+I don't even remember where the fridge was!
 I think it's time to take a little break and source
 
 
@@ -154,19 +151,14 @@ Some... hmmm.. provisions.
 
 
 
-I will have to find the fridge!
-
+Let's go on a mission to find wherever
+they store the supplies on this bunker.
 
  
 
 
-Nice idea. I don't recall where it was tho.
-
-
-
-
-
-I doubt there is any food on the control room.
-
+It's not much a secret base if you give your
+address to order pizza.
 
 &gamemode 2
+
