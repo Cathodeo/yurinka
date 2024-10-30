@@ -1,9 +1,9 @@
 #include <battle_data.h>
 
 Character character_list[] = {
-	 {0, 60, 70, 55, 2, 1, 0, 60, 100, 100, {1, 2, 3}, {0, 0}},
-	 {1, 120, 90, 80, 1, 0, 0, 99, 60, 120, {4, 5, 6}, {0, 0}},
-	 {2, 85, 100, 110, 4, 3, 80, 140, 80, {7, 8, 9}, {0, 0}}, 
+    {0, 60, 70, 55, 2, 1, 0, 60, 100, 100, {1, 2, 3}, {0, 0}},
+    {1, 120, 90, 80, 1, 0, 0, 99, 60, 120, {4, 5, 6}, {0, 0}},
+    {2, 85, 100, 110, 4, 3, 80, 140, 80, 100, {7, 8, 9}, {0, 0}} 
 };
 Foe foe_list[] = {
 	{0, 0, 0, 0, 0, 0, 0, 0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, "NULL", "None"},
@@ -44,3 +44,82 @@ Status status_list[] = {
     {8, "Poisoned", 0, 5, 100, 0, 0, 0, 0, 5, 0, 0, 0, 0},           // Deals damage over time (DoT) due to poison
     {9, "Evasion Down", 0, 2, 100, 0, 0, 0, 0, 0, -50, 0, 0, 0},       // Reduces enemy evasion
 };
+
+
+Move_Messages message_list[] =
+
+
+{
+	{"Yurinka attempted to adjust the enemy's electronics","to a dangerous level of voltage.",
+		"The foe's electronics are boiling hot!",
+		"She misplaced a comma. The enemy's voltage rebooted",
+		"Her code did not even compile. Check the syntax",
+		"The foe is still on its safe range of temperatures!"}
+		,
+	{"Yurinka attempted to inhibit the radio", "signal on the target foe",
+		"The foe's signals have been shut down!",
+		"Only the frequency of Discopolo Radio was inhibited.",
+		"Yurinka used AM instead of FM so nothing happened",
+		"Her portable radio ran out of AAA batteries. Oops."}
+		,
+	{"Yurinka messed up the foe memory", "with gibberish data",
+	"The enemy's systems are corrupted!",
+	"THAT region of memory was unused tho...",
+	"Yurinka forgot a semicolon. Her code did not compile!",
+	"Yurinka got distracted playing BOOM on her radio"}
+	,
+	{"Markus tried to protect his teammate", "Against the enemy attacks"
+	 "Markus is body-blocking attacks now!",
+	 "Markus tripped on an obstacle on its way",
+	 "Markus got distracted by a trivial order from Yurinka",
+	 "Markus's sunglasses were to dirty to locate his ally"}
+	 ,
+	{"Markus pulled his first aid kit.", "And tried to assist his ally",
+	"Markus healed his target successfully",
+	"Markus brought vodka instead of sanitary alcohol?",
+	"Markus forgot to buy new needles. Better not.",
+	"Markus is busy trying to find the antiseptic."}
+	,
+	{"Markus tried to stronghold the foe", "To prevent it from moving",
+	"The foe is unable to move now!",
+	"Yurinka got into the way. Markus apologized three times",
+	"The foe turned to be more slippery than prevented",
+	"The foe could not be aprehended so easily tho"}
+	,
+	{"Ola pulled a zapping stun gun", "And fired bolts at the foe",
+	"The enemy was electrocuted with needless intensity",
+	"Ola's zapper blew a fuse and only smoke came out of it",
+	"Ola decided to shock Yurinka as a prank instead",
+	"Ola mishandled the zapper and got a mild shock herself"}
+	,
+	{"Ola pulled a mechanical punch", "that stretched a long distance",
+	"The enemy received a devastating blow!",
+	"The punch was missing a screw and dismantled mid-air",
+	"The trajectory was too predictable and the enemy dodged it",
+	"The punch was mere centimeters short from the target"}
+	,
+	{"Ola pulled a tiny drill", "that started spinning at high RPM",
+	"The drill pierced through the foe's armor",
+	"The drill got stuck. It clearly needs to be greased",
+	"Ola used the wrong tip size. Nothing was pierced",
+	"The drill's tip was sent flying and missed the target"
+	}
+	,
+	{"The enemy drone fired a round of tiny bullets", "against its target",
+	"The diminutive bullets impacted, wreaking havoc.",
+	"The drone missed its target completely",
+	"The drone miscalculated the foe's moving speed",
+	"The drone needs to reload its ammo"}
+	,
+	{"The enemy scanned a target", "Searching for its vitals",
+	"The target's defense has been compromised",
+	"A seagull passed in front of the target",
+	"The target has mild fever and thus the scan failed",
+	"The scanner's software glitched and rebooted"}
+	,
+	{"The enemy deployed a magnetic field", "And its ally was protected",
+	 "The enemy increased it's resistance",
+	 "The magnetic field was too weak to do anything",
+	 "Interferences made the field vanish",
+	 "The magnetic field has so many holes it's of no use"}	
+	};

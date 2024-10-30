@@ -130,6 +130,20 @@ void display_attack_info(int selection, int character)
 {textout_ex(buffer, font, move_list[(selection - 1) + (character * 3)].move_name, 62 , 274, makecol(255, 255, 255), -1);
 }
 
+void battle_message(const char *message)
+
+{	draw_superui();
+	textout_ex(buffer, font, message, 62 , 274, makecol(255, 255, 255), -1);
+	blit(buffer, screen, 58, 270, 58, 270, 490, 40);
+	rest(50);
+}
+
+void battle_message_row2(const char *message)
+{textout_ex(buffer, font, message, 62 , 284, makecol(255, 255, 255), -1);
+	blit(buffer, screen, 58, 270, 58, 270, 490, 40);
+	rest(50);
+}
+
 void display_enemy_choices(int enemy1, int enemy2, int enemy3)
 {
   if (enemy1 != 0) {textprintf_ex(buffer, font, 62, 274, makecol(255,255,255) , -1, "Press 1 to attack: %s", foe_list[enemy1].name);

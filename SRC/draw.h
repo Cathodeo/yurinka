@@ -33,5 +33,7 @@ void load_battle_foe(BITMAP *buffer, int battle_id, int foe_index, int w);
 void display_attack_info(int selection, int character);
 void draw_superui();
 void display_ally_choices(int ally1, int ally2, int ally3);
+void battle_message(const char *message);
+void battle_message_row2(const char *message);
 
 #endif  // End of include guard

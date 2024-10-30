@@ -71,7 +71,6 @@ int mouseCardHover(int mouse_x, int mouse_y) {
 	
 	int image_xy = 64;
 	int offset = 8;
-	printf("Mouse pos is %d for x, %d for y \n", mouse_x, mouse_y);
     if (mouse_x >= 180 && mouse_x <= (180 + image_xy) &&
         mouse_y >= 370 && mouse_y <= (370 + image_xy)) {
         return 1;  // Hover above card 1
@@ -163,12 +162,12 @@ int calculate_damage(int attack_power, int base_power, int defense) {
 }
 
 
-int check_status_condition(int chara_foe, int actor_id) {
+int check_status_condition(int status_no) {
     // Retrieve status condition (0 = can act, 1 = paralyzed, etc.)
-    int status = get_character_status(actor_id);
-    if (status == 6) { // Example: 1 could mean "paralyzed"
+    if (status_no == 6) { // Example: 1 could mean "paralyzed"
         int roll = rand() % 100;
         if (roll < 50) { // 50% chance that paralysis prevents action
+			battle_message_row2("But could not attack due to paralysis");
             return 0;
         }
     }
@@ -184,7 +183,7 @@ int check_accuracy(int chara_foe, int actor_id, int move_id, int battle_id) {
      if (chara_foe == 0)
     {accuracy_multiplier = (foe_list[battle_list[battle_id].enemy_list[actor_id]].accuracy / 100);}  // e.g., 1.2 for 120% accuracy
     if (chara_foe == 1)
-    {accuracy_multiplier = get_accuracy_multiplier(character_list[actor_id].accuracy / 100);}
+    {accuracy_multiplier = (character_list[actor_id].accuracy / 100);}
     int effective_accuracy = (int)(base_accuracy * accuracy_multiplier);
     int roll = rand() % 100;
     return roll < effective_accuracy; // 1 if hit, 0 if miss
@@ -192,11 +191,69 @@ int check_accuracy(int chara_foe, int actor_id, int move_id, int battle_id) {
 
 // Checks if a secondary effect is applied based on the move's effect chance
 int check_special_effects(int move_id, int chance) {
-    int effect_chance = get_move_effect_chance(move_id); // e.g., 30 for 30% chance
+    int effect_chance = move_list[move_id].status_chance; // e.g., 30 for 30% chance
     int roll = rand() % chance;
-    
     return roll < effect_chance; // 1 if effect applies, 0 if not
 }
 
+int apply_damage_target(int battle_id, int isfoe, int attacker_id, int attacker_status, int defender_id, int moveSelection) {
+    if (isfoe != 0) {
+        return 0; // Currently handling only non-foe logic
+    }
+    
+    int final_damage;
+    char final_damage_message[64]; // Allocate memory for final damage message
 
+    // Check if the attacker can proceed based on their status
+    if (check_status_condition(attacker_status) == 0) {
+        return 0;
+    }
+
+    // Retrieve the move index from the character's moveset
+    int move_index = moveSelection;
+    Move_Messages move_messages = message_list[move_index];
+
+    // Display the first line of the move execution message
+    battle_message(move_messages.line1_execution);
+    while (!key[KEY_ENTER]) { rest(20); } // Wait for Enter key press
+    clear_keybuf();
+	rest(50);
+
+    // Display the second line of the move execution message
+    battle_message_row2(move_messages.line2_execution);
+    while (!key[KEY_ENTER]) { rest(20); }
+    clear_keybuf();
+    rest(50);
+
+    // Check accuracy of the move
+    if (check_accuracy(1, attacker_id, move_index, battle_id) == 0) {
+        battle_message(move_messages.miss1);  // Display miss message
+        while (!key[KEY_ENTER]) { rest(20); }
+        clear_keybuf();
+        rest(50);
+        return 0;
+    }
+
+    // Display hit message if the move is successful
+    battle_message(move_messages.hit);
+    while (!key[KEY_ENTER]) { rest(20);}
+    clear_keybuf();
+	rest(50);
+
+    // Calculate the final damage
+    final_damage = calculate_damage(
+        move_list[move_index].power,
+        character_list[attacker_id].attack,
+        foe_list[battle_list[battle_id].enemy_list[defender_id]].defense
+    );
+
+    // Prepare and display the final damage message
+    sprintf(final_damage_message, "The foe %s received %d damage!",
+            foe_list[battle_list[battle_id].enemy_list[defender_id]].name, final_damage);
+    battle_message(final_damage_message);
+    while (!key[KEY_ENTER]) { rest(20); }
+    clear_keybuf();
+	rest(100);
+    return final_damage;
+}
 

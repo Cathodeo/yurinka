@@ -72,7 +72,10 @@ int main(void) {
     int current_target = 0;
     int party_battle_selections[3];
     int foe_target_selection[3];
+    int party_statuses[3];
+    int foe_statuses[3];
     int ally_up[3];
+    int move_index;
 
     allegro_init();
     install_timer();
@@ -204,114 +207,124 @@ int main(void) {
     
     
     case 3:
-    
-    ally_up[0] = 1;
-    ally_up[1] = 2;
-    ally_up[2] = 3;
+    // Initial setup for allies and mouse
+    ally_up[0] = 1; ally_up[1] = 1; ally_up[2] = 1;
     install_mouse();
     poll_mouse();
     enable_hardware_cursor();
     show_mouse(screen);
     selection = 0;
-    //Draw battle UI and render the background
+
+    // Draw the base battle UI, background, and initialize enemy party
     draw_battleui_base(buffer);
     draw_battle_ui(buffer, current_hp, max_hp, tracker.rotation, status);
-    load_battle_background(buffer, battle_id);	
+    load_battle_background(buffer, battle_id);
     printf("Debug: Drawing graphical elements finished");
-    //Init group of enemies
-    
-    //Init with three enemy ids.
-    //For all practical purpose, the enemy with id 0
-    //Is not rendered or considered alive
+
     int enemy_party_id[3];
     Foe enemy_party[3];
-    for (int i = 0; i < 3; i++)
-    {
-    enemy_party_id[i] = get_enemy_party(battle_id)[i];
-    enemy_party[i] = foe_list[enemy_party_id[i]];
-    //If the enemy id on the party is not 0
-	//(Not empty), initialize as up (alive)
-		if (enemy_party_id[i] > 0)
-		{
-		 tracker.foe_up[i] = 1;
-		 load_battle_foe(buffer, battle_id, i, (40 + (120 * i)));
-		}
-	}
-	printf("Debug: Loaded enemy party, drawn enemy foes");
-    switch (tracker.rotation)
-    {
-	case 0:
-    draw_portrait(buffer, "IMG/FACE1.PCX");
-    break;
-    case 1:
-    draw_portrait(buffer, "IMG/FACE3.PCX");
-    break;
-	case 2:
-    draw_portrait(buffer, "IMG/FACE2.PCX");
-    break;
-	}
-	printf("Debug: Loaded portrait");
-	//Debug. To expand!
-	for (int i = 0; i < 3; i++) {
-	draw_move_card(buffer, character_list[tracker.rotation].moveset_base[i], 180 + (i * 72));
-	}
+    for (int i = 0; i < 3; i++) {
+        enemy_party_id[i] = get_enemy_party(battle_id)[i];
+        enemy_party[i] = foe_list[enemy_party_id[i]];
+        
+        // Initialize enemy as "up" (alive) if ID > 0
+        if (enemy_party_id[i] > 0) {
+            tracker.foe_up[i] = 1;
+            load_battle_foe(buffer, battle_id, i, (40 + (120 * i)));
+        }
+    }
+    printf("Debug: Loaded enemy party, drawn enemy foes");
+
+    // Draw character portrait based on rotation
+    char* portraits[3] = {"IMG/FACE1.PCX", "IMG/FACE3.PCX", "IMG/FACE2.PCX"};
+    draw_portrait(buffer, portraits[tracker.rotation]);
+    printf("Debug: Loaded portrait");
+
+    // Draw move cards for the current character
+    for (int i = 0; i < 3; i++) {
+        draw_move_card(buffer, character_list[tracker.rotation].moveset_base[i], 180 + (i * 72));
+    }
     blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
-    while (selection == 0)
-	{
-	poll_mouse();
-	selection = moveSelection(tracker.rotation);
-	printf("Executed selection checker with result: %d \n", selection);
-	blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
-	rest(10);
-	}
-	while (current_target == 0)
-	{
-		if (is_move_ally_targeted(selection, tracker.rotation) == 1)
-		{current_target = choiceShow_ally(
-		is_self(ally_up[0], tracker.rotation, 0),
-		is_self(ally_up[1], tracker.rotation, 1),
-		is_self(ally_up[2], tracker.rotation, 2)
-		);
-		blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
-		rest(20);}
-		else {
-		current_target = choiceShow(enemy_party_id[0], enemy_party_id[1], enemy_party_id[2]);
-		blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
-		rest(20);}
-	}					
-						
-						foe_target_selection[tracker.rotation] = current_target;
-						party_battle_selections[tracker.rotation] = selection;
-                        rest(50);
-						if (tracker.rotation < 2)
-						{tracker.rotation++;}
-						else
-						{tracker.rotation = 0;}
-						status = character_list[tracker.rotation].health;
-						draw_battleui_base(buffer);
-                        draw_battle_ui(buffer, current_hp, max_hp, tracker.rotation, status);
-						status_id = character_list[tracker.rotation].status;
-						switch (tracker.rotation)
-						{
-						case 0:
-						draw_portrait(buffer, "IMG/FACE1.PCX");
-						break;
-						case 1:
-						draw_portrait(buffer, "IMG/FACE3.PCX");
-						break;
-						case 2:
-						draw_portrait(buffer, "IMG/FACE2.PCX");
-						break;
-						}
-						printf("Debug: Loaded portrait");
-						//Debug. To expand!
-						for (int i = 0; i < 3; i++) {
-						draw_move_card(buffer, character_list[tracker.rotation].moveset_base[i], 180 + (i * 72));
-						}
-						blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
-						selection = 0;
-						current_target = 0;
-                        rest(100);
+
+    // Selection loop for moves
+    while (selection == 0) {
+        poll_mouse();
+        selection = moveSelection(tracker.rotation);
+        printf("Executed selection checker with result: %d \n", selection);
+        blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+        rest(10);
+    }
+
+    // Target selection loop
+    while (current_target == 0) {
+        if (is_move_ally_targeted(selection, tracker.rotation) == 1) {
+            current_target = choiceShow_ally(
+                is_self(ally_up[0], tracker.rotation, 0),
+                is_self(ally_up[1], tracker.rotation, 1),
+                is_self(ally_up[2], tracker.rotation, 2)
+            );
+        } else {
+            current_target = choiceShow(enemy_party_id[0], enemy_party_id[1], enemy_party_id[2]);
+        }
+        blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+        rest(20);
+    }
+
+    // Save selections and advance rotation
+    foe_target_selection[tracker.rotation] = current_target;
+    party_battle_selections[tracker.rotation] = selection;
+    selection = 0;
+    current_target = 0;
+
+    rest(50);
+
+    tracker.rotation = (tracker.rotation + 1) % 3;
+    tracker.ready = (tracker.rotation == 0) ? 1 : 0;
+
+    // Update character status and UI
+    status = character_list[tracker.rotation].health;
+    draw_battleui_base(buffer);
+    draw_battle_ui(buffer, current_hp, max_hp, tracker.rotation, status);
+    status_id = character_list[tracker.rotation].status;
+    
+    // Reload portrait for updated rotation
+    draw_portrait(buffer, portraits[tracker.rotation]);
+    printf("Debug: Loaded portrait");
+
+    // Draw move cards for the updated character
+    for (int i = 0; i < 3; i++) {
+		printf("\nDebug, character: %d", tracker.rotation);
+		printf("\nDebug, card with index: %d whith means moveno %d", i, character_list[tracker.rotation].moveset_base[i]);
+        draw_move_card(buffer, character_list[tracker.rotation].moveset_base[i], 180 + (i * 72));
+    }
+    blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
+
+    // Execute actions if all characters are ready
+    if (tracker.ready == 1) {
+        for (int i = 0; i < 3; i++) {
+			move_index = character_list[i].moveset_base[party_battle_selections[i]] - 1;
+			allegro_message("\n Debug: chosen move number %d from character %d and choice %d", move_index, i, party_battle_selections[i]);
+			draw_battleui_base(buffer);
+			draw_battle_ui(buffer, current_hp, max_hp, tracker.rotation, status);
+			load_battle_background(buffer, battle_id);
+			for (int i = 0; i < 3; i++) {
+            enemy_party_id[i] = get_enemy_party(battle_id)[i];
+            enemy_party[i] = foe_list[enemy_party_id[i]];
+			// Initialize enemy as "up" (alive) if ID > 0
+			if (enemy_party_id[i] > 0) {
+            load_battle_foe(buffer, battle_id, i, (40 + (120 * i)));
+        }
+    }
+			status_id = character_list[tracker.rotation].status;
+			// Reload portrait for updated rotation
+			draw_portrait(buffer, portraits[tracker.rotation]);
+			printf("Debug: Loaded portrait");
+            apply_damage_target(0, 0, i, 0, foe_target_selection[i], move_index);
+        }
+        tracker.ready = 0;
+        rest(100);
+    }
+                        
     break;
     
 }

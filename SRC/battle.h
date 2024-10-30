@@ -124,10 +124,11 @@ int is_move_ally_targeted(int selection, int character_id);
 //Main battle processing
 //
 //
-int check_status_condition(int chara_foe, int actor_id);
-int check_accuracy(int chara_foe, int actor_id, int move_id);
-int check_special_effects(int move_id);
-int apply_damage_target(int attacker_id, int defender_id, int base_power, int is_multi, int multiplier, int crit_chance);
+int calculate_damage(int attack_power, int base_power, int defense);
+int check_status_condition(int status_no);
+int check_accuracy(int chara_foe, int actor_id, int move_id, int battle_id);        
+int check_special_effects(int move_id, int chance);
+int apply_damage_target(int battle_id, int isfoe, int attacker_id, int attacker_status, int defender_id, int moveSelection);
 
 
 #endif
