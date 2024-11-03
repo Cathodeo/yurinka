@@ -7,7 +7,7 @@
 Welcome to the city of BaltycMorsk! 
 The ever-pretty capital of the Union of republics.
 (After the rest of republics parted ways, unfortunately)
-&gamemode 3
+
 
 
 Our comrades spend their cheerful days

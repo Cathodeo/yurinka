@@ -177,13 +177,14 @@ int check_status_condition(int status_no) {
 
 // Checks if the attack lands based on accuracy and character's accuracy multiplier
 int check_accuracy(int chara_foe, int actor_id, int move_id, int battle_id) {
-	float accuracy_multiplier;
-    int base_accuracy = (move_list[move_id].accuracy_multiplier) * 100;
+	int base_accuracy;
+    float accuracy_multiplier = move_list[move_id].accuracy_multiplier;
      
      if (chara_foe == 0)
-    {accuracy_multiplier = (foe_list[battle_list[battle_id].enemy_list[actor_id]].accuracy / 100);}  // e.g., 1.2 for 120% accuracy
+     
+    {accuracy_multiplier = (foe_list[battle_list[battle_id].enemy_list[actor_id]].accuracy);}  // e.g., 1.2 for 120% accuracy
     if (chara_foe == 1)
-    {accuracy_multiplier = (character_list[actor_id].accuracy / 100);}
+    {base_accuracy = (character_list[actor_id].accuracy);}
     int effective_accuracy = (int)(base_accuracy * accuracy_multiplier);
     int roll = rand() % 100;
     return roll < effective_accuracy; // 1 if hit, 0 if miss
@@ -210,24 +211,37 @@ int apply_damage_target(int battle_id, int isfoe, int attacker_id, int attacker_
     }
 
     // Retrieve the move index from the character's moveset
-    int move_index = moveSelection;
+    int move_index = moveSelection - 1;
     Move_Messages move_messages = message_list[move_index];
+	
+	load_blit_alt(frame_list[attacker_id].path, 54, 18);
 
     // Display the first line of the move execution message
     battle_message(move_messages.line1_execution);
     while (!key[KEY_ENTER]) { rest(20); } // Wait for Enter key press
     clear_keybuf();
 	rest(50);
-
+	
     // Display the second line of the move execution message
     battle_message_row2(move_messages.line2_execution);
     while (!key[KEY_ENTER]) { rest(20); }
     clear_keybuf();
     rest(50);
-
+	
     // Check accuracy of the move
     if (check_accuracy(1, attacker_id, move_index, battle_id) == 0) {
-        battle_message(move_messages.miss1);  // Display miss message
+		int roll = (rand() % 2) + 1;
+		switch (roll){
+		case 1:
+        battle_message(move_messages.miss1);
+        break;
+        case 2:
+        battle_message(move_messages.miss2);
+        break;
+        case 3:
+        battle_message(move_messages.miss3);
+        break;
+        }  // Display miss message
         while (!key[KEY_ENTER]) { rest(20); }
         clear_keybuf();
         rest(50);
@@ -236,6 +250,8 @@ int apply_damage_target(int battle_id, int isfoe, int attacker_id, int attacker_
 
     // Display hit message if the move is successful
     battle_message(move_messages.hit);
+    load_blit_alt(frame_list[battle_list[battle_id].foe_img[defender_id]].path, 54, 18);
+
     while (!key[KEY_ENTER]) { rest(20);}
     clear_keybuf();
 	rest(50);
@@ -248,12 +264,15 @@ int apply_damage_target(int battle_id, int isfoe, int attacker_id, int attacker_
     );
 
     // Prepare and display the final damage message
-    sprintf(final_damage_message, "The foe %s received %d damage!",
+    if (final_damage > 1)
+    {sprintf(final_damage_message, "The foe %s received %d damage!",
             foe_list[battle_list[battle_id].enemy_list[defender_id]].name, final_damage);
-    battle_message(final_damage_message);
+    battle_message(final_damage_message);}
+    else 
+    {return 0;}	
     while (!key[KEY_ENTER]) { rest(20); }
     clear_keybuf();
-	rest(100);
+	rest(500);
     return final_damage;
 }
 

@@ -271,8 +271,8 @@ int main(void) {
     }
 
     // Save selections and advance rotation
-    foe_target_selection[tracker.rotation] = current_target;
-    party_battle_selections[tracker.rotation] = selection;
+    foe_target_selection[tracker.rotation] = current_target - 1;
+    party_battle_selections[tracker.rotation] = selection - 1;
     selection = 0;
     current_target = 0;
 
@@ -302,23 +302,17 @@ int main(void) {
     // Execute actions if all characters are ready
     if (tracker.ready == 1) {
         for (int i = 0; i < 3; i++) {
-			move_index = character_list[i].moveset_base[party_battle_selections[i]] - 1;
-			allegro_message("\n Debug: chosen move number %d from character %d and choice %d", move_index, i, party_battle_selections[i]);
-			draw_battleui_base(buffer);
-			draw_battle_ui(buffer, current_hp, max_hp, tracker.rotation, status);
-			load_battle_background(buffer, battle_id);
+			move_index = character_list[i].moveset_base[party_battle_selections[i]];
 			for (int i = 0; i < 3; i++) {
             enemy_party_id[i] = get_enemy_party(battle_id)[i];
             enemy_party[i] = foe_list[enemy_party_id[i]];
 			// Initialize enemy as "up" (alive) if ID > 0
-			if (enemy_party_id[i] > 0) {
-            load_battle_foe(buffer, battle_id, i, (40 + (120 * i)));
-        }
+
     }
-			status_id = character_list[tracker.rotation].status;
-			// Reload portrait for updated rotation
-			draw_portrait(buffer, portraits[tracker.rotation]);
-			printf("Debug: Loaded portrait");
+			draw_gradient_background(buffer, 0, 0, SCREEN_W, SCREEN_H);
+			draw_battleui_base(buffer);
+			draw_portrait(buffer, portraits[i]);
+			blit(buffer, screen, 0, 0, 0, 0, SCREEN_W, SCREEN_H);
             apply_damage_target(0, 0, i, 0, foe_target_selection[i], move_index);
         }
         tracker.ready = 0;

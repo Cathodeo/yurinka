@@ -660,3 +660,4 @@ Big pass. Let's see how we can solve this with
 our ingenuity and needless violence!
 
 
+&gamemode 3   

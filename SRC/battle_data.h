@@ -3,6 +3,7 @@
 
 #include <battle.h>
 
+extern Frame frame_list[];
 extern Character character_list[];
 extern Foe foe_list[];
 extern Battle battle_list[];

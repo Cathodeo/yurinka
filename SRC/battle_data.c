@@ -1,10 +1,23 @@
 #include <battle_data.h>
 
-Character character_list[] = {
-    {0, 60, 70, 55, 2, 1, 0, 60, 100, 100, {1, 2, 3}, {0, 0}},
-    {1, 120, 90, 80, 1, 0, 0, 99, 60, 120, {4, 5, 6}, {0, 0}},
-    {2, 85, 100, 110, 4, 3, 80, 140, 80, 100, {7, 8, 9}, {0, 0}} 
+
+Frame frame_list[] = {
+	{"IMG/YURBA1.PCX"},
+	{"IMG/MARBA1.PCX"},
+	{"IMG/OLABA1.PCX"},
+	{},
+	{},
+	{},
+	{"IMG/FOEBA1.PCX"}
 };
+
+Character character_list[] = {
+    {0, 60, 70, 55, 2, 1, 0, 85, 100, 100, {1, 2, 3}, {0, 0}},
+    {1, 120, 90, 80, 1, 0, 0, 99, 60, 120, {4, 5, 6}, {0, 0}},
+    {2, 85, 100, 110, 4, 3, 80, 95, 80, 100, {7, 8, 9}, {0, 0}} 
+};
+
+
 Foe foe_list[] = {
 	{0, 0, 0, 0, 0, 0, 0, 0, {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, "NULL", "None"},
 	{1, 60, 55, 140, 80, 100, 100, 0, {10, 10, 10, 10, 10, 11, 11, 11, 12, 12}, "IMG/FOE001.PCX", "Mechanical Hornet"}
@@ -14,7 +27,7 @@ Equipable equipable_list[] = {
 };
 
 Battle battle_list[] = {
- {0, "IMG/BATT01.PCX", {1, 0, 1}} 
+ {0, "IMG/BATT01.PCX", {1, 0, 1}, 0, 1, 2, {6,6,6}} 
 };
 
 Move move_list[] = {
@@ -74,17 +87,17 @@ Move_Messages message_list[] =
 	 "Markus got distracted by a trivial order from Yurinka",
 	 "Markus's sunglasses were to dirty to locate his ally"}
 	 ,
-	{"Markus pulled his first aid kit.", "And tried to assist his ally",
-	"Markus healed his target successfully",
-	"Markus brought vodka instead of sanitary alcohol?",
-	"Markus forgot to buy new needles. Better not.",
-	"Markus is busy trying to find the antiseptic."}
-	,
 	{"Markus tried to stronghold the foe", "To prevent it from moving",
 	"The foe is unable to move now!",
 	"Yurinka got into the way. Markus apologized three times",
 	"The foe turned to be more slippery than prevented",
 	"The foe could not be aprehended so easily tho"}
+	,
+	{"Markus pulled his first aid kit.", "And tried to assist his ally",
+	"Markus healed his target successfully",
+	"Markus brought vodka instead of sanitary alcohol?",
+	"Markus forgot to buy new needles. Better not.",
+	"Markus is busy trying to find the antiseptic."}
 	,
 	{"Ola pulled a zapping stun gun", "And fired bolts at the foe",
 	"The enemy was electrocuted with needless intensity",

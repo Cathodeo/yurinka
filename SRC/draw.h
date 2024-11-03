@@ -27,6 +27,7 @@ void choice_picker_text(const char *choice1, const char *choice2, const char *ch
 void triple_dialog(const char *text1, const char *text2, const char *text3);
 void triple_dialog_typewriter(const char *text1, const char *text2, const char *text3);
 void load_blit(const char *image_path, BITMAP *buffer, int dst_x, int dst_y);
+void load_blit_alt(const char *image_path, int dst_x, int dst_y);
 void load_blit_transparent(const char *image_path, BITMAP *buffer, int dst_x, int dst_y);
 void load_battle_background(BITMAP *buffer, int battle_id);
 void load_battle_foe(BITMAP *buffer, int battle_id, int foe_index, int w);

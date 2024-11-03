@@ -5,6 +5,10 @@
 #include <allegro.h>
 
 typedef struct {
+	char path[24];
+} Frame;
+
+typedef struct {
     int id;         // Character ID
     int health;
     int attack; 
@@ -75,7 +79,11 @@ typedef struct {
 typedef struct {
 	int id;
 	char battle_background[16]; 
-	int enemy_list[3];  
+	int enemy_list[3]; 
+	int yurinka_img;
+	int markus_img;
+	int ola_img;
+	int foe_img[3]; 
 } Battle;
 
 typedef struct {
