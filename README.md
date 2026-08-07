@@ -23,21 +23,10 @@ To run Yurinka, you'll need:
 
 ### Installation
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/Cathodeo/yurinka.git
-   cd yurinka
-   ```
+Actual discussion on the rabbit hole of using DJGPP is here. 
+This is my former Reddit account and an even earlier Poc
 
-2. Compile the game using DJGPP:
-   ```bash
-   make
-   ```
-
-3. Run the game:
-   ```bash
-   ./yurinka.exe
-   ```
+https://www.reddit.com/r/retrogamedev/comments/1fih3ic/vscode_dosbox_allegro_djgpp_setup_to_develop/
 
 ### Game Controls
 
