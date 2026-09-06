@@ -1,7 +1,13 @@
 
-# Yurinka
+# Yurinka [Discontinued long ago]
 
 Yurinka is a point-and-click game where every room is identified by an integer (room ID) and contains up to 3 objects. When the mouse hovers over an object, an option appears, and actions can be performed with a left-click. The game is being developed using Allegro and runs on MS-DOS.
+
+The project was discontinued a short time after. 2 years later, it's making a comeback as a 3D Game with
+100% hand-made models resembling the original 2024 Ai-generated art.
+
+[New project:] (https://github.com/Cathodeo/yurinka-godot/)
+
 
 ## Features
 
@@ -9,17 +15,7 @@ Yurinka is a point-and-click game where every room is identified by an integer (
 - Room and object interaction
 - Mouse hover detection and click actions
 - Room-based navigation with unique identifiers
-- Retro gaming experience in MS-DOS
 
-## Getting Started
-
-### Prerequisites
-
-To run Yurinka, you'll need:
-
-- MS-DOS or DOSBox for emulation
-- Allegro 4.2.2 (or higher) installed
-- DJGPP compiler for MS-DOS development
 
 ### Installation
 
@@ -31,8 +27,8 @@ https://www.reddit.com/r/retrogamedev/comments/1fih3ic/vscode_dosbox_allegro_djg
 ### Game Controls
 
 - **Mouse Hover**: Displays options for interactable objects.
-- **Left-click**: Perform the action on the hovered object.
-- **Navigation**: Move between rooms by interacting with objects or buttons.
+- **Return Key**: Perform the action on the hovered object.
+- **Navigation**: Move between rooms by interacting with objects.
 
 ## Development
 
